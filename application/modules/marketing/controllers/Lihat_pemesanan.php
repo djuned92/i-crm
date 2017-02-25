@@ -7,21 +7,36 @@ class Lihat_pemesanan extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model(array(
-			'model_lihat_pemesanan'	=> 'lihat_pemesanan'
+			'model_pemesanan'	=> 'pemesanan',
+
 		));
 
 
 		// if ($this->session->userdata('level') != 2)
 		// {
-		// 	redirect('auth/users');
+		// 	redirect('pelanggan/before_login');
 		// }
 	}
 	
 	public function index()
 	{
-		$this->template->marketing('lihat_pemesanan','script_marketing');
+		$kode_pemesanan = $this->input->post('kode_pemesanan');
+		$search = $this->pemesanan->search($kode_pemesanan);
+		if($search == TRUE)
+		{
+			$data['pemesanan'] = $search;
+			$this->template->marketing('lihat_pemesanan','script_marketing', $data);
+		}
+		elseif ($search == FALSE) 
+		{
+			$this->session->set_flashdata('kode_salah', 'Kode pemesanan salah');
+			redirect('marketing/lihat_pemesanan');
+		}
+		else
+		{
+			$this->template->marketing('lihat_pemesanan','script_marketing');
+		}
 	}
-
 }
 
 /* End of file Lihat_pemesanan.php */

@@ -22,7 +22,7 @@
                 <ul>
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                     </li>
-                    <li><a href="register.html">Regiter</a>
+                    <li><a href="<?=base_url()?>pelanggan/register">Regiter</a>
                     </li>
                 </ul>
 
@@ -31,47 +31,14 @@
             </div>
             <!-- /.col-md-3 -->
 
-            <div class="col-md-3 col-sm-6">
-
-                <h4>Top categories</h4>
-
-                <h5>Men</h5>
-
-                <ul>
-                    <li><a href="category.html">T-shirts</a>
-                    </li>
-                    <li><a href="category.html">Shirts</a>
-                    </li>
-                    <li><a href="category.html">Accessories</a>
-                    </li>
-                </ul>
-
-                <h5>Ladies</h5>
-                <ul>
-                    <li><a href="category.html">T-shirts</a>
-                    </li>
-                    <li><a href="category.html">Skirts</a>
-                    </li>
-                    <li><a href="category.html">Pants</a>
-                    </li>
-                    <li><a href="category.html">Accessories</a>
-                    </li>
-                </ul>
-
-                <hr class="hidden-md hidden-lg">
-
-            </div>
-            <!-- /.col-md-3 -->
-
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-6 col-sm-6">
 
                 <h4>Where to find us</h4>
 
                 <p><strong>Obaju Ltd.</strong>
-                    <br>13/25 New Avenue
-                    <br>New Heaven
-                    <br>45Y 73J
-                    <br>England
+                    <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     <br>
                     <strong>Great Britain</strong>
                 </p>

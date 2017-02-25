@@ -16,7 +16,9 @@
 
 <!-- styles -->
 <link href="<?=base_url()?>assets/obaju/css/font-awesome.css" rel="stylesheet">
-<link href="<?=base_url()?>assets/obaju/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet" />
+<link href="<?=base_url()?>assets/css/formValidation.css" rel="stylesheet" />
+ <link rel="stylesheet" href="<?=base_url()?>assets/plugins/datatables/dataTables.bootstrap.css">
 <link href="<?=base_url()?>assets/obaju/css/animate.min.css" rel="stylesheet">
 <link href="<?=base_url()?>assets/obaju/css/owl.carousel.css" rel="stylesheet">
 <link href="<?=base_url()?>assets/obaju/css/owl.theme.css" rel="stylesheet">

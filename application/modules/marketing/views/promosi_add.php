@@ -12,8 +12,6 @@
 
                 <form class="form-horizontal promosi" action="<?=base_url()?>marketing/promosi/add" method="POST">
                     
-                    <input type="hidden" name="id_paket_wisata" value="">
-
                     <div class="form-group">
                         <label class="col-md-2 control-label">Wisata</label>
                         <div class="col-md-3">

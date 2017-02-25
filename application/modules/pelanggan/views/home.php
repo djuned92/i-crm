@@ -12,22 +12,22 @@
                         <div class="flip-container">
                             <div class="flipper">
                                 <div class="front">
-                                    <a href="detail.html">
+                                    <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>">
                                         <img src="<?=base_url()?>assets/img/<?=$r->gambar_wisata?>" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="back">
-                                    <a href="detail.html">
+                                    <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>">
                                         <img src="<?=base_url()?>assets/img/<?=$r->gambar_wisata?>" alt="" class="img-responsive">
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <a href="detail.html" class="invisible">
+                        <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>" class="invisible">
                             <img src="<?=base_url()?>assets/img/<?=$r->gambar_wisata?>" alt="" class="img-responsive">
                         </a>
                         <div class="text">
-                            <h3><a href="detail.html"><?=$r->nama_wisata?></a></h3>
+                            <h3 style="margin-bottom: 0px;"><a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>"><?=$r->nama_wisata?></a></h3>
                             <p class="price">
                                 <?php 
                                     $promosi = $this->promosi->check_promosi($r->id_paket_wisata)->row();
@@ -48,8 +48,20 @@
                                 ?>
                             </p>
                             <p class="buttons">
-                                <a href="detail.html" class="btn btn-default">Lihat detail</a>
-                                <a href="basket.html" class="btn btn-primary"><i class="fa fa-hand-o-up"></i>Pesan</a>
+                                <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>" class="btn btn-default" style="width: 150px;margin-bottom: 0px;">Lihat detail</a>
+                                <form action="<?=base_url()?>pelanggan/pesan/index/<?=$r->id_paket_wisata?>" method="POST">
+                                    <input type="hidden" name="id_pelanggan" 
+                                    value="<?php if($this->session->userdata('login') == TRUE){echo $id_pelanggan;}?>">
+                                    <input type="hidden" name="id_paket_wisata" value="<?=$r->id_paket_wisata?>">
+                                    <input type="hidden" name="tgl_pemesanan" 
+                                    value="<?=$date?>">
+
+                                    <input type="hidden" name="harga_pemesanan" 
+                                    value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $r->harga;}?>">
+                                    <button type="submit" class="btn btn-primary" style="width: 150px;margin-left: 40px;">
+                                        <i class="fa fa-hand-o-up"></i>Pesan
+                                    </button>
+                                </form>
                             </p>
                         </div>
                         <!-- /.text -->

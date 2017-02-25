@@ -57,21 +57,21 @@
         <h4 align="center">PERSADA DUTA BELITION</h4>
         <h4 align="center">TOUR & TRAVEL</h4>
      </div>
-     <div>
-      <?php if ($this->session->flashdata('username_not_register')) : ?>
-          <strong>
-              <span class='help-block'><?=$this->session->flashdata('username_not_register')?></span>
-          </strong>
-      <?php elseif ($this->session->flashdata('wrong_password')) : ?>
-          <strong>
-              <span class='help-block'><?=$this->session->flashdata('wrong_password')?></span>
-          </strong>
-      <?php elseif ($this->session->flashdata('status_tidak_aktif')) : ?>
-          <strong>
-              <span class='help-block'><?=$this->session->flashdata('status_tidak_aktif')?></span>
-          </strong>
-      <?php endif; ?>
-     </div>
+      <div>
+        <?php if ($this->session->flashdata('username_not_register')) : ?>
+            <strong>
+                <span class='help-block'><?=$this->session->flashdata('username_not_register')?></span>
+            </strong>
+        <?php elseif ($this->session->flashdata('wrong_password')) : ?>
+            <strong>
+                <span class='help-block'><?=$this->session->flashdata('wrong_password')?></span>
+            </strong>
+        <?php elseif ($this->session->flashdata('status_tidak_aktif')) : ?>
+            <strong>
+                <span class='help-block'><?=$this->session->flashdata('status_tidak_aktif')?></span>
+            </strong>
+        <?php endif; ?>
+      </div>
     <form id="defaultForm" method="post" class="form-horizontal" action="<?=base_url()?>auth/users">
      <div class="form-group ">
        <input type="text" name="username" class="form-control" placeholder="Username ">

@@ -13,7 +13,7 @@ class Paket_wisata extends CI_Controller {
 
 		// if ($this->session->userdata('level') != 2)
 		// {
-		// 	redirect('auth/users');
+		// 	redirect('pelanggan/before_login');
 		// }
 	}
 

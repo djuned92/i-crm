@@ -47,6 +47,7 @@ class Users extends CI_Controller {
 					'id_user'		=> $valid_user->id_user,
 					'username'		=> $valid_user->username,
 					'level'			=> $valid_user->level,
+					'login'			=> TRUE
 					);
 				$this->session->set_userdata($data);
 				
@@ -62,7 +63,7 @@ class Users extends CI_Controller {
 						redirect('manajer/home');
 						break;
 					case ($valid_user->level == '4'):
-						redirect('pelanggan');
+						redirect('pelanggan/home');
 						break;							
 					default : 
 						break;
@@ -75,7 +76,7 @@ class Users extends CI_Controller {
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('auth/users');
+		redirect('pelanggan/home');
 	}
 
 }

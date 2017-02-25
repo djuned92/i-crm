@@ -49,6 +49,11 @@ class Home extends CI_Controller {
 
 		$this->template->pelanggan('home','script_pelanggan',$data);		
 	}
+
+	public function register()
+	{
+		$this->template->pelanggan('register','script_pelanggan');
+	}
 }
 
 /* End of file Home.php */

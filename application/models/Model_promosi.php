@@ -8,7 +8,7 @@ class Model_promosi extends CI_Model {
 		return $this->db->select('p.*, pw.*')
 						->from('promosi as p')
 						->join('paket_wisata as pw','pw.id_paket_wisata = p.id_paket_wisata')
-						->order_by('pw.id_paket_wisata','DESC')
+						->order_by('p.id_promosi','DESC')
 						->get();
 	}
 

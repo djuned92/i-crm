@@ -93,7 +93,7 @@
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                nomor_pemesanan: {
+                kode_pemesanan: {
                     validators: {
                         notEmpty: {
                             message: 'Nomor pemesanan tidak boleh kosong'
@@ -167,6 +167,7 @@ $(document).ready(function(){
           success:function(data)
           {
             console.log(data);
+            $("#nama_wisata").val(data.nama_wisata);
             $("#lokasi").val(data.lokasi);
             $("#gamba_wisata").val(data.gamba_wisata);
             $("#deskripsi").val(data.deskripsi);

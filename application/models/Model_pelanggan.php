@@ -33,6 +33,11 @@ class Model_pelanggan extends CI_Model {
 		$this->db->where('id_user', $id_user)->update('pelanggan', $data_pelanggan);
 	}
 
+	public function update_profile($id_user, $data)
+	{
+		$this->db->where('id_user', $id_user)->update('pelanggan', $data);
+	}
+
 	public function delete($id_user)
 	{
 		$this->db->where('id_user', $id_user)->delete('user');

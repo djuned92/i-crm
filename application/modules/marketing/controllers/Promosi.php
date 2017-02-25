@@ -8,21 +8,21 @@ class Promosi extends CI_Controller {
 		parent::__construct();
 		$this->load->model(array(
 			'model_paket_wisata'	=> 'paket_wisata',
-			'model_promosi'			=> 'promosi'
+			'model_promosi'			=> 'promosi',
+			'model_pelanggan'		=> 'pelanggan'
 		));
 
 		$this->load->helper('text');
 
 		// if ($this->session->userdata('level') != 2)
 		// {
-		// 	redirect('auth/users');
+		// 	redirect('pelanggan/before_login');
 		// }
 	}
 
 	public function index()
 	{
 		$data['promosi'] = $this->promosi->get_all()->result();
-		// return var_dump($data);s
 		$this->template->marketing('promosi','script_marketing',$data);
 	}
 
@@ -36,6 +36,7 @@ class Promosi extends CI_Controller {
 		} 
 		else 
 		{
+			$this->send_email();
 			$data_promosi = array (
 				'id_paket_wisata'=> $this->input->post('id_paket_wisata'),
 				'nama'			=> $this->input->post('nama'),
@@ -46,6 +47,11 @@ class Promosi extends CI_Controller {
 			$this->promosi->add($data_promosi);
 			$this->session->set_flashdata('add', 'Promosi paket wisata berhasil ditambah');
 			redirect('marketing/promosi');
+			
+			if(!$this->email->send())
+			{
+				print_r($this->email->print_debugger());
+			}
 		}
 	}
 
@@ -78,6 +84,47 @@ class Promosi extends CI_Controller {
 	{
 		$data = $this->paket_wisata->get_by_id($id_paket_wisata)->row();
 		echo json_encode($data);
+	}
+
+	public function send_email()
+	{
+		$this->load->library('email');
+
+		// configure email setting
+		$config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.gmail.com';
+        $config['smtp_port'] = '465';
+        $config['smtp_user'] = 'ahmaddjunaedi92@gmail.com'; //bangzafran445@gmail.com
+        $config['smtp_pass'] = 'junjunned92'; //bastol1234567 
+        // $config['protocol'] = 'mail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
+        $config['newline'] = "\r\n"; //use double quotes
+        $this->email->initialize($config);
+
+      	$id_paket_wisata = $this->input->post('id_paket_wisata');
+		$paket_wisata = $this->paket_wisata->get_by_id($id_paket_wisata)->row();
+		$nama_wisata = $paket_wisata->nama_wisata;
+
+		$tgl = date_create($this->input->post('tgl_promosi'));
+		$tgl_promosi = date_format($tgl, 'dMY');
+        $potongan_harga = $this->input->post('potongan_harga');
+		$subject = "Promosi ".$nama_wisata;
+		$message = "Promosi Paket Wisata ".$nama_wisata. ' tanggal '.$tgl_promosi. ' Diskon '.$potongan_harga. ' %';
+
+        // send email
+        $pelanggan = $this->pelanggan->get_all()->result();
+        foreach($pelanggan as $r)
+        {
+        	$this->email->clear();
+        	$this->email->from('ahmaddjunaedi92@gmail.com','Ahmad Djunaedi');
+	        $this->email->to($r->email);
+	        $this->email->subject($subject);
+	        $this->email->message($message);
+	        $this->email->send();
+    	}
 	}
 
 }

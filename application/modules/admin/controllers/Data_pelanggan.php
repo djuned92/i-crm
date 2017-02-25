@@ -13,7 +13,7 @@ class Data_pelanggan extends CI_Controller {
 
 		// if ($this->session->userdata('level') != 1)
 		// {
-		// 	redirect('auth/users');
+		// 	redirect('pelanggan/before_login');
 		// }
 	}
 

@@ -6,34 +6,29 @@
                     <ul id="menu-top" class="nav navbar-nav">
                         <li>
                             <a class="<?php if ($this->uri->segment(2) == 'home'){ echo 'menu-top-active ';} ?>" 
-                                href="<?=base_url()?>admin/home">Home
+                                href="<?=base_url()?>manajer/home">Home
+                            </a>
+                        </li>
+                        <li>
+                            <a class="<?php if ($this->uri->segment(2) == 'kritik_saran'){ echo 'menu-top-active ';} ?>" 
+                                href="<?=base_url()?>manajer/kritik_saran">Kritik & Saran
                             </a>
                         </li>
                         <li>
                             <a class="<?php if ($this->uri->segment(2) == 'data_pelanggan'){ echo 'menu-top-active ';} ?>" 
-                                href="<?=base_url()?>admin/data_pelanggan">Data Pelanggan
+                                href="<?=base_url()?>manajer/data_pelanggan">Data Pelanggan
                             </a>
                         </li>
                         <li>
-                            <a class="<?php if ($this->uri->segment(2) == 'data_pengguna'){ echo 'menu-top-active ';} ?>" 
-                                href="<?=base_url()?>admin/data_pengguna">Data Pengguna
-                            </a>
-                        </li>
-                        <li>
-                            <a class="<?php if ($this->uri->segment(2) == 'data_pemesanan'){ echo 'menu-top-active ';} ?>" 
-                                href="<?=base_url()?>admin/data_pemesanan">Data Pemesanan
-                            </a>
-                        </li>
-                        <li>
-                            <a class="<?php if ($this->uri->segment(2) == 'validasi_pembayaran'){ echo 'menu-top-active ';} ?>" 
-                                href="<?=base_url()?>admin/validasi_pembayaran">Validasi Pembayaran
+                            <a class="<?php if ($this->uri->segment(2) == 'chat'){ echo 'menu-top-active ';} ?>" 
+                                href="<?=base_url()?>manajer/chat">Chat
                             </a>
                         </li>
                     </ul>
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                Admin <span class="glyphicon glyphicon-user"></span>
+                                Manajer <span class="glyphicon glyphicon-user"></span>
                             </a>
                             <div class="dropdown-menu dropdown-settings" style="width:250px; height:auto;">
                                 <div class="media">

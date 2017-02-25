@@ -10,7 +10,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-warning">
-                    <?php echo $this->session->userdata('username'); ?>
                     This is blank page for which you can customize for your project. 
                     Use this admin template 100% free to use for personal and commercial use which is crafted by 
                     <br />
