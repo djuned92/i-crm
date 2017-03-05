@@ -5,7 +5,14 @@
 
             <div class="row products">
 
-                <?php foreach($paket_wisata as $r): ?>
+                <?php 
+                    foreach($paket_wisata as $r): 
+                    // $tgl_akhir = date_create($r->tgl_akhir);  
+                    // $tgl_akhir = date_format($tgl_akhir,'Y-m-d');
+                    // $date = date("Y-m-d");
+                    // // $tgl_akhir_tomorrow = date($tgl_akhir, strtotime('tomorrow'));
+                    // if($tgl_akhir < $date):
+                ?>
                 
                 <div class="col-md-3 col-sm-4">
                     <div class="product">

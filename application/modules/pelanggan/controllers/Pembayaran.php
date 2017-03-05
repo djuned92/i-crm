@@ -17,6 +17,17 @@ class Pembayaran extends CI_Controller {
 		}
 	}
 
+	public function index()
+	{
+		$id_user = $this->session->userdata('id_user');
+		$pelanggan = $this->pelanggan->get_by_id($id_user)->row();
+		$id_pelanggan = $pelanggan->id_pelanggan;
+
+		$data['pemesanan'] = $this->pemesanan->segera_dibayar($id_pelanggan)->result();
+		// return var_dump($data);
+		$this->template->pelanggan('pembayaran_index','script_pelanggan',$data);
+	}
+
 	public function add($id_pemesanan = NULL)
 	{
 		$this->form_validation->set_rules('nama_pemilik', 'Nama Pemilik', 'required'); // trigger bootstrap formvalidation
@@ -45,7 +56,7 @@ class Pembayaran extends CI_Controller {
 			);
 			$this->pemesanan->update($id_pemesanan, $data_pemesanan);
 			$this->session->set_flashdata('add', 'Pembayaran berhasil');
-			redirect('pelanggan/pemesanan');
+			redirect('pelanggan/pembayaran');
 		}
 	}
 

@@ -11,7 +11,6 @@ class Lihat_pemesanan extends CI_Controller {
 
 		));
 
-
 		// if ($this->session->userdata('level') != 2)
 		// {
 		// 	redirect('pelanggan/before_login');

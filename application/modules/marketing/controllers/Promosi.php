@@ -36,7 +36,7 @@ class Promosi extends CI_Controller {
 		} 
 		else 
 		{
-			$this->send_email();
+			// $this->send_email();
 			$data_promosi = array (
 				'id_paket_wisata'=> $this->input->post('id_paket_wisata'),
 				'nama'			=> $this->input->post('nama'),
@@ -48,10 +48,10 @@ class Promosi extends CI_Controller {
 			$this->session->set_flashdata('add', 'Promosi paket wisata berhasil ditambah');
 			redirect('marketing/promosi');
 			
-			if(!$this->email->send())
-			{
-				print_r($this->email->print_debugger());
-			}
+			// if(!$this->email->send())
+			// {
+			// 	print_r($this->email->print_debugger());
+			// }
 		}
 	}
 
@@ -109,7 +109,7 @@ class Promosi extends CI_Controller {
 		$nama_wisata = $paket_wisata->nama_wisata;
 
 		$tgl = date_create($this->input->post('tgl_promosi'));
-		$tgl_promosi = date_format($tgl, 'dMY');
+		$tgl_promosi = date_format($tgl, 'd m Y');
         $potongan_harga = $this->input->post('potongan_harga');
 		$subject = "Promosi ".$nama_wisata;
 		$message = "Promosi Paket Wisata ".$nama_wisata. ' tanggal '.$tgl_promosi. ' Diskon '.$potongan_harga. ' %';

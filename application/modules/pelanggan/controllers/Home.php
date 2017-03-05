@@ -14,6 +14,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('pagination');
+		
 		// pagination settings
 	    $config['base_url'] = 'http://localhost/i-crm/pelanggan/home/index';
 	    $config['total_rows'] = $this->paket_wisata->count_all();

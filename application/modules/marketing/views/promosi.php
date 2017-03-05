@@ -92,6 +92,10 @@
                                 title="Detail" data-target="#detail<?=$r->id_paket_wisata?>">
                                     <i class="fa fa-eye"></i>
                                 </button>
+                                <button class="btn btn-sm btn-success btn-group" data-toggle="modal" data-placement="bottom" 
+                                title="Promosi Semua Pelanggan" data-target="#promosi<?=$r->id_paket_wisata?>">
+                                    <i class="fa fa-tags"></i>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -269,3 +273,36 @@
 </div>
 <?php endforeach; ?>
 <!-- end modal detail -->
+
+<!-- modal promosi -->
+<?php foreach($promosi as $r): ?>
+<div class="modal fade" id="promosi<?=$r->id_paket_wisata?>" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Promosi Semua Pelanggan</h4>
+            </div>
+
+            <form action="<?=base_url()?>marketing/paket_wisata/send_email" class="form-horizontal" method="POST">
+                
+                <input type="hidden" name="potongan_harga" value="<?=$r->potongan_harga?>">
+                <input type="hidden" name="id_paket_wisata" value="<?=$r->id_paket_wisata?>">
+                <input type="hidden" name="tgl_promosi" value="<?=$r->tgl_promosi?>">
+
+                <div class="modal-body">
+                    <h4>Promosi Paket Wisata <strong><?=$r->nama_wisata?> Kesemua Pelanggan ?</strong></h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Iya</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>
+<!-- end modal promosi -->

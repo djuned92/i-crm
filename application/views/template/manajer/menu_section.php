@@ -10,13 +10,13 @@
                             </a>
                         </li>
                         <li>
-                            <a class="<?php if ($this->uri->segment(2) == 'kritik_saran'){ echo 'menu-top-active ';} ?>" 
-                                href="<?=base_url()?>manajer/kritik_saran">Kritik & Saran
+                            <a class="<?php if ($this->uri->segment(2) == 'ulasan'){ echo 'menu-top-active ';} ?>" 
+                                href="<?=base_url()?>manajer/ulasan">Ulasan Paket Wisata
                             </a>
                         </li>
                         <li>
                             <a class="<?php if ($this->uri->segment(2) == 'data_pelanggan'){ echo 'menu-top-active ';} ?>" 
-                                href="<?=base_url()?>manajer/data_pelanggan">Data Pelanggan
+                                href="<?=base_url()?>manajer/data_pelanggan">Data Pemesanan
                             </a>
                         </li>
                         <li>

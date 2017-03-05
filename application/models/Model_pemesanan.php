@@ -24,6 +24,16 @@ class Model_pemesanan extends CI_Model {
 						->get();
 	}
 
+	public function ulasan($id_pemesanan)
+	{
+		return $this->db->select('p.*, pemesanan.*, pw.*')
+						->from('pelanggan as p')
+						->join('pemesanan','pemesanan.id_pelanggan = p.id_pelanggan')
+						->join('paket_wisata as pw','pw.id_paket_wisata = pemesanan.id_paket_wisata')
+						->where('pemesanan.id_pemesanan',$id_pemesanan)
+						->get();
+	}
+
 	public function kode_pemesanan($kode_pemesanan)
 	{
 		return $this->db->select('p.*')
@@ -58,6 +68,30 @@ class Model_pemesanan extends CI_Model {
 						->get();
 	}
 
+	public function status_disetujui($id_pelanggan)
+	{
+		$where = "pemesanan.id_pelanggan = $id_pelanggan AND pemesanan.status = 'Disetujui'";
+		return $this->db->select('p.*, pemesanan.*, pw.*')
+						->from('pelanggan as p')
+						->join('pemesanan','pemesanan.id_pelanggan = p.id_pelanggan')
+						->join('paket_wisata as pw','pw.id_paket_wisata = pemesanan.id_paket_wisata')
+						->where($where)
+						->order_by('pemesanan.id_pemesanan','DESC')
+						->get();
+	}
+
+	public function segera_dibayar($id_pelanggan)
+	{
+		$where = "pemesanan.id_pelanggan = $id_pelanggan AND pemesanan.status = 'Segera Dibayar'";
+		return $this->db->select('p.*, pemesanan.*, pw.*')
+						->from('pelanggan as p')
+						->join('pemesanan','pemesanan.id_pelanggan = p.id_pelanggan')
+						->join('paket_wisata as pw','pw.id_paket_wisata = pemesanan.id_paket_wisata')
+						->where($where)
+						->order_by('pemesanan.id_pemesanan','DESC')
+						->get();
+	}
+
 	public function search($kode_pemesanan)
 	{
 		// $q = $this->db->like('p.kode_pemesanan',$kode_pemesanan)
@@ -74,6 +108,39 @@ class Model_pemesanan extends CI_Model {
 		if($q->num_rows() > 0)
 		{
 			return $q->result();
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+
+	public function count_pemesanan_by_paket_wisata($id_paket_wisata)
+	{
+		return $this->db->like('id_paket_wisata',$id_paket_wisata)
+						->like('status','Disetujui')
+						->from('pemesanan')
+						->count_all_results();
+	}
+
+	// search manajer
+	public function search_manajer($from_tgl, $to_tgl)
+	{
+		// $from_tgl = date('Y-m-d', strtotime($from_tgl));
+		// $to_tgl = date('Y-m-d', strtotime($to_tgl))
+		return $this->db->select('p.*, pw.*, pelanggan.nama, pelanggan.id_pelanggan') //
+						->from('pemesanan as p')
+						->join('paket_wisata as pw','pw.id_paket_wisata = p.id_paket_wisata')
+						->join('pelanggan','pelanggan.id_pelanggan = p.id_pelanggan')
+						->where('p.tgl_pemesanan >=',$from_tgl)
+						->where('p.tgl_pemesanan <=',$to_tgl)
+						->where('p.status','Disetujui')
+						->order_by('p.id_pemesanan','DESC')
+						->get();
+		
+		if($q->num_rows() > 0)
+		{
+			return TRUE;
 		}
 		else
 		{

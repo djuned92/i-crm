@@ -185,3 +185,33 @@
         });
     });
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.ulasan').formValidation({
+            framework : 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                isi_kritik: {
+                    message: 'The username is not valid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Kritik tidak boleh kosong'
+                        }
+                    }
+                },
+                isi_testimoni: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Testimoni tidak boleh kosong'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>

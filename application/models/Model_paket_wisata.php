@@ -13,11 +13,11 @@ class Model_paket_wisata extends CI_Model {
 
 	public function get_by_id($id_paket_wisata)
 	{
-			return $this->db->select('pw.*')
-						->from('paket_wisata as pw')
-						->limit(1)
-						->where('pw.id_paket_wisata', $id_paket_wisata)
-						->get();
+		return $this->db->select('pw.*')
+					->from('paket_wisata as pw')
+					->limit(1)
+					->where('pw.id_paket_wisata', $id_paket_wisata)
+					->get();
 	}
 
 	public function paket_wisata_list($limit, $start)

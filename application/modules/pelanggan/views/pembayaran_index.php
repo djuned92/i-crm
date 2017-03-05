@@ -4,9 +4,16 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=base_url()?>pelanggan/home">Home</a>
-                <li>Pemesanan</li>
+                <li>Pembayaran</li>
             </ul>
         </div>
+
+        <?php if($this->session->flashdata('add')):?>
+            <div class="alert alert-info">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong><?php echo $this->session->flashdata('add'); ?></strong>
+            </div>
+        <?php endif; ?>
 
         <div class="col-md-12">
             <table class="table table-striped" id="myTable">
@@ -18,7 +25,7 @@
                             <th>Tanggal Pemesanan</th>
                             <th>Harga</th>
                             <th>Status</th>
-                            <!-- <th>Aksi</th> -->
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,15 +58,15 @@
                                 ?>
                             </td>
                             <td><?=$r->status?></td>
-                            <!-- <td>
-                                <button class="btn btn-sm btn-danger btn-group" data-toggle="modal" data-placement="bottom" 
+                            <td>
+                                <!-- <button class="btn btn-sm btn-danger btn-group" data-toggle="modal" data-placement="bottom" 
                                 title="Hapus" data-target="#delete<?=$r->id_user?>">
                                     <i class="fa fa-trash"></i>
                                 </button>
                                 <button class="btn btn-sm btn-warning btn-group" data-toggle="modal" data-placement="bottom" 
                                 title="Detail" data-target="#detail<?=$r->id_user?>">
                                     <i class="fa fa-eye"></i>
-                                </button>
+                                </button> -->
                                 <a href="<?=base_url()?>pelanggan/pembayaran/add/<?=$r->id_pemesanan?>"
                                 style="
                                      <?php
@@ -81,7 +88,7 @@
                                         <i class="fa fa-money"></i>
                                     </button>
                                 </a>
-                            </td> -->
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

@@ -796,7 +796,7 @@ h1 {
 @media (max-width: 767px) {
   #content #blog-listing .post .image img.img-responsive,
   #content #blog-homepage .post .image img.img-responsive {
-    min-width: 100%;
+    /*min-width: 100%;*/
   }
 }
 #content #blog-listing .post .read-more,
