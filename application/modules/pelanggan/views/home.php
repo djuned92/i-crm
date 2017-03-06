@@ -39,18 +39,26 @@
                                 <?php 
                                     $promosi = $this->promosi->check_promosi($r->id_paket_wisata)->row();
                                     $date = date("Y-m-d");
-                                    if($date == $promosi->tgl_promosi)
+                                    if($promosi != NULL)
                                     {
-                                        $disc = $r->harga * ($promosi->potongan_harga/100);
-                                        $harga_disc = $r->harga - $disc;
-                                        $harga = number_format($r->harga,0,'.','.');
-                                        echo "<del>$harga IDR </del>";
-                                        echo number_format($harga_disc, 0,'.','.') .' IDR';
+                                        if($date == $promosi->tgl_promosi)
+                                        {
+                                            $disc = $r->harga * ($promosi->potongan_harga/100);
+                                            $harga_disc = $r->harga - $disc;
+                                            $harga = number_format($r->harga,0,'.','.');
+                                            echo "<del>$harga IDR </del>";
+                                            echo number_format($harga_disc, 0,'.','.') .' IDR';
+                                        }
+                                        else
+                                        {
+                                            $harga = number_format($r->harga,0,'.','.');
+                                            echo $harga .' IDR';
+                                        }
                                     }
-                                    else
+                                    else 
                                     {
                                         $harga = number_format($r->harga,0,'.','.');
-                                        echo $harga .' IDR';
+                                        echo $harga .' IDR';   
                                     }
                                 ?>
                             </p>
@@ -72,8 +80,13 @@
                                             <input type="hidden" name="tgl_pemesanan" 
                                             value="<?=$date?>">
 
+                                            <?php if($promosi != NULL):?>
                                             <input type="hidden" name="harga_pemesanan" 
                                             value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $r->harga;}?>">
+                                            <?php elseif($promosi == NULL):?>
+                                            <input type="hidden" name="harga_pemesanan" 
+                                            value="<?=$r->harga?>">
+                                            <?php endif;?>
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="fa fa-hand-o-up"></i>Pesan
                                             </button>
@@ -87,7 +100,7 @@
 
                         <?php 
                             $date = date("Y-m-d");
-                            if($date == $promosi->tgl_promosi):
+                            if($promosi != NULL && $date == $promosi->tgl_promosi):
                         ?>
                         <div class="ribbon sale">
                             <div class="theribbon">Promosi</div>
@@ -100,8 +113,8 @@
                     <!-- /.product -->
                 </div>
                 
-                <?php endforeach; ?>
-               <!-- endif;s -->
+                <?php  endforeach; ?>
+               <!-- endif; -->
             </div>
             <!-- /.products -->
 

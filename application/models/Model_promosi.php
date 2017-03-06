@@ -29,6 +29,14 @@ class Model_promosi extends CI_Model {
 						->join('paket_wisata as pw','pw.id_paket_wisata = p.id_paket_wisata')
 						->where('p.id_paket_wisata',$id_paket_wisata)
 						->get();
+		// if ($q->num_rows() > 0)
+		// {
+		// 	return TRUE;
+		// }
+		// else
+		// {
+		// 	return FALSE;
+		// }
 	}
 
 	public function update($id_paket_wisata, $data)

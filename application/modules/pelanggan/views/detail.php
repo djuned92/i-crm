@@ -22,7 +22,7 @@
                     <?php 
                         $promosi = $this->promosi->check_promosi($detail_wisata->id_paket_wisata)->row();
                         $date = date("Y-m-d");
-                        if($date == $promosi->tgl_promosi):
+                        if($promosi != NULL && $date == $promosi->tgl_promosi):
                     ?>
                     <div class="ribbon sale">
                         <div class="theribbon">Promosi</div>
@@ -38,7 +38,7 @@
                         <p class="price">
                             <?php 
                                     $date = date("Y-m-d");
-                                    if($date == $promosi->tgl_promosi)
+                                    if($promosi != NULl && $date == $promosi->tgl_promosi)
                                     {
                                         $disc = $detail_wisata->harga * ($promosi->potongan_harga/100);
                                         $harga_disc = $detail_wisata->harga - $disc;
@@ -62,8 +62,13 @@
                                 <input type="hidden" name="tgl_pemesanan" 
                                 value="<?=$date?>">
 
+                                <?php if($promosi != NULL):?>
                                 <input type="hidden" name="harga_pemesanan" 
                                 value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $detail_wisata->harga;}?>">
+                                <?php elseif($promosi == NULL):?>
+                                <input type="hidden" name="harga_pemesanan" 
+                                value="<?=$detail_wisata->harga?>">
+                                <?php endif;?>
                                 
                                 <p class="text-center buttons">
                                     <button type="submit" class="btn btn-primary" style="width: 120px;">
@@ -132,8 +137,10 @@
                                 <h3 style="margin-bottom: 0px;"><a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>"><?=$r->nama_wisata?></a></h3>
                                 <p class="price">
                                     <?php 
-                                        $promosi = $this->promosi->check_promosi($r->id_paket_wisata)->row();
-                                        $date = date("Y-m-d");
+                                    $promosi = $this->promosi->check_promosi($r->id_paket_wisata)->row();
+                                    $date = date("Y-m-d");
+                                    if($promosi != NULL)
+                                    {
                                         if($date == $promosi->tgl_promosi)
                                         {
                                             $disc = $r->harga * ($promosi->potongan_harga/100);
@@ -147,7 +154,13 @@
                                             $harga = number_format($r->harga,0,'.','.');
                                             echo $harga .' IDR';
                                         }
-                                    ?>
+                                    }
+                                    else 
+                                    {
+                                        $harga = number_format($r->harga,0,'.','.');
+                                        echo $harga .' IDR';   
+                                    }
+                                ?>
                                 </p>
                                  <p class="buttons">
                                 <!-- style="width: 150px;margin-bottom: 0px;" 
@@ -159,7 +172,7 @@
                                         class="btn btn-default">Lihat detail</a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <form action="<?=base_url()?>pelanggan/pesan/index/<?=$r->id_paket_wisata?>" method="POST"
+                                       <form action="<?=base_url()?>pelanggan/pesan/index/<?=$r->id_paket_wisata?>" method="POST"
                                         style="width: 100px;">
                                             <input type="hidden" name="id_pelanggan" 
                                             value="<?php if($this->session->userdata('login') == TRUE){echo $id_pelanggan;}?>">
@@ -167,8 +180,13 @@
                                             <input type="hidden" name="tgl_pemesanan" 
                                             value="<?=$date?>">
 
+                                            <?php if($promosi != NULL):?>
                                             <input type="hidden" name="harga_pemesanan" 
                                             value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $r->harga;}?>">
+                                            <?php elseif($promosi == NULL):?>
+                                            <input type="hidden" name="harga_pemesanan" 
+                                            value="<?=$r->harga?>">
+                                            <?php endif;?>
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="fa fa-hand-o-up"></i>Pesan
                                             </button>
@@ -182,7 +200,7 @@
 
                             <?php 
                                 $date = date("Y-m-d");
-                                if($date == $promosi->tgl_promosi):
+                                 if($promosi != NULL && $date == $promosi->tgl_promosi):
                             ?>
                             <div class="ribbon sale">
                                 <div class="theribbon">Promosi</div>
