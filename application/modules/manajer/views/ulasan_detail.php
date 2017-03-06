@@ -31,7 +31,7 @@
                                 <?php $date = date_create($paket_wisata->tgl_akhir); echo date_format($date, 'd-m-Y')?>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Harga</td>
                             <td>
                                 <?php $harga = number_format($paket_wisata->harga,0,'.','.');
@@ -41,7 +41,7 @@
                         <tr>
                             <td>Norek Perusahaan</td>
                             <td><?=$paket_wisata->norek_perusahaan?></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>

@@ -108,6 +108,11 @@
                 
                 <!-- input hidden email-->
                 <input type="hidden" name="email" value="<?=$r->email?>">
+                 <input type="hidden" name="nama" value="<?=$r->nama?>">
+                <input type="hidden" name="nama_wisata" value="<?=$r->nama_wisata?>">
+                <input type="hidden" name="tgl_mulai" value="<?=$r->tgl_mulai?>">
+                <input type="hidden" name="tgl_akhir" value="<?=$r->tgl_akhir?>">
+                <input type="hidden" name="status" value="Disetujui">
 
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -137,6 +142,9 @@
                 
                 <!-- input hidden email-->
                 <input type="hidden" name="email" value="<?=$r->email?>">
+                <input type="hidden" name="nama" value="<?=$r->nama?>">
+                <input type="hidden" name="kode_pemesanan" value="<?=$r->kode_pemesanan?>">
+                <input type="hidden" name="nama_wisata" value="<?=$r->nama_wisata?>">
 
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>

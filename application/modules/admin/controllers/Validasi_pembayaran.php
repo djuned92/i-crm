@@ -43,8 +43,29 @@ class Validasi_pembayaran extends CI_Controller {
         $this->email->initialize($config);
 
         $to_email = $this->input->post('email');
-		$subject = "Validasi Pembayaran";
-		$message = "Pembayaran Valid";
+        $nama = $this->input->post('nama');
+        $kode_pemesanan = $this->input->post('kode_pemesanan');
+        $nama_wisata = $this->input->post('nama_wisata');
+        $tgl_mulai = date_create($this->input->post('tgl_mulai'));
+        $tgl_mulai = date_format($tgl_mulai,'d-m-y');
+        $tgl_akhir = date_create($this->input->post('tgl_akhir'));
+        $tgl_akhir = date_format($tgl_akhir, 'd-m-Y');
+        $status = $this->input->post('status');
+		$subject = "Pemesanan";
+		$message = 
+		"Hai $nama<br/><br/>
+		Selamat pembayaran paket wisata anda telah lolos validasi, untuk detail paket wisata yang anda pesan berada dibawah ini,<br/<br/>
+		Nama Pemesan : $nama <br/>
+		Nama Paket Wisata : $nama_wisata <br/>
+		Tanggal : $tgl_mulai s/d $tgl_akhir <br/>
+		Lokasi Wisata : $lokasi <br/>
+		Status : $status <br/><br/>
+		Terimakasih telah melakukan pemesanan paket wisata melalui kami, Apabila anda ingin membatalkan pesanan paket wisata segera hubungi pihak admin kami dalam fitur “Chat” dalam web resmi.<br/>
+		Setelah paket wisata berakhir, Anda juga dapat melakukan Ulasan mengenai pengalaman yang telah anda lewati menggunakan jasa Tour & travel kami. Kami sangat mengharapkan ulasan anda untuk perbaikan kami lebih baik.<br/><br/>
+
+		Salam Hormat Kami, <br/><br/>
+		PT. Persada Duta Beliton
+		";
 
         // send email
         $this->email->from('ahmaddjunaedi92@gmail.com','Ahmad Djunaedi');
@@ -91,8 +112,22 @@ class Validasi_pembayaran extends CI_Controller {
         $this->email->initialize($config);
 
         $to_email = $this->input->post('email');
-		$subject = "Validasi Pembayaran";
-		$message = "Pembayaran Tidak Valid";
+        $nama = $this->input->post('nama');
+        $kode_pemesanan = $this->input->post('kode_pemesanan');
+        $nama_wisata = $this->input->post('nama_wisata');
+		$subject = "Pemesanan";
+		$message = 
+		"Hai $nama <br/><br/>
+		Detail Pesanan : <br/>
+		Nama Pemesan : $nama<br/>
+		Nama Paket Wisata : $nama_wisata<br/>
+		Nomor Pemesanan : $kode_pemesanan<br/><br/>
+		Mohon maaf pesanan paket wisata anda kami BATALKAN dikarenakan untuk saat ini paket wisata yang anda pesan tidak tersedia atau pembayaran anda gagal kami verifikasi.<br/>
+		Mohon untuk konfirmasi ulang pembayaran anda, pastikan detail pembayaran yang anda isi telah benar.<br/>
+		Apabila ada informasi yang belum jelas, bisa anda hubungi admin secara langsung melalui fitur “Chat” yang ada dalam web resmi kami.<br/><br/>
+		Salam Hormat kami,<br/><br/>
+		PT. Persada Duta Beliton
+		";
 
         // send email
         $this->email->from('ahmaddjunaedi92@gmail.com','Ahmad Djunaedi');

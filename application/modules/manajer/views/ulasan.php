@@ -20,8 +20,8 @@
                             <th>Deskripsi</th>
                             <th>Tgl Mulai</th>
                             <th>Tgl Akhir</th>
-                            <th>Harga</th>
-                            <th>Norek Perusahaan</th>
+                            <!-- <th>Harga</th>
+                            <th>Norek Perusahaan</th> -->
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -70,8 +70,8 @@
                                     echo $j. " ".$bulan[$n]. " ".date('y');
                                 ?>
                             </td>
-                            <td><?php $harga = number_format($r->harga,0,'.','.');echo $harga;?> IDR</td>
-                            <td><?=$r->norek_perusahaan?></td>
+                           <!--  <td><?php $harga = number_format($r->harga,0,'.','.');echo $harga;?> IDR</td>
+                            <td><?=$r->norek_perusahaan?></td> -->
                             <td>
                                 <!-- <button class="btn btn-sm btn-warning btn-group" data-toggle="modal" data-placement="bottom" 
                                 title="Detail" data-target="#detail<?=$r->id_paket_wisata?>">

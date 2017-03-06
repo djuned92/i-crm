@@ -19,11 +19,11 @@
                                 href="<?=base_url()?>manajer/data_pelanggan">Data Pemesanan
                             </a>
                         </li>
-                        <li>
+                       <!--  <li>
                             <a class="<?php if ($this->uri->segment(2) == 'chat'){ echo 'menu-top-active ';} ?>" 
                                 href="<?=base_url()?>manajer/chat">Chat
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
                         <li class="dropdown">
