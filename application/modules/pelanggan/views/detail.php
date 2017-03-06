@@ -149,24 +149,34 @@
                                         }
                                     ?>
                                 </p>
-                                <p class="buttons">
-                                    <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>" 
-                                    class="btn btn-default" style="width:150px;margin-bottom: 0px; ">Lihat detail</a>
+                                 <p class="buttons">
+                                <!-- style="width: 150px;margin-bottom: 0px;" 
+                                     style="width: 150px;margin-left: 40px;"
+                                -->
+                                <div class="row">
+                                    <div class="col-sm-5 col-sm-offset-1">
+                                        <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>" 
+                                        class="btn btn-default">Lihat detail</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <form action="<?=base_url()?>pelanggan/pesan/index/<?=$r->id_paket_wisata?>" method="POST"
+                                        style="width: 100px;">
+                                            <input type="hidden" name="id_pelanggan" 
+                                            value="<?php if($this->session->userdata('login') == TRUE){echo $id_pelanggan;}?>">
+                                            <input type="hidden" name="id_paket_wisata" value="<?=$r->id_paket_wisata?>">
+                                            <input type="hidden" name="tgl_pemesanan" 
+                                            value="<?=$date?>">
 
-                                    <form action="<?=base_url()?>pelanggan/pesan/index/<?=$detail_wisata->id_paket_wisata?>" method="POST">
-                                        <input type="hidden" name="id_pelanggan" 
-                                        value="<?php if($this->session->userdata('login') == TRUE){echo $id_pelanggan;}?>">
-                                        <input type="hidden" name="id_paket_wisata" value="<?=$detail_wisata->id_paket_wisata?>">
-                                        <input type="hidden" name="tgl_pemesanan" 
-                                        value="<?=$date?>">
-
-                                        <input type="hidden" name="harga_pemesanan" 
-                                        value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $detail_wisata->harga;}?>">
-                                        <button type="submit" class="btn btn-primary" style="width: 150px;margin-left: 40px;">
-                                            <i class="fa fa-hand-o-up"></i>Pesan
-                                        </button>
-                                    </form>
-                                </p>
+                                            <input type="hidden" name="harga_pemesanan" 
+                                            value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $r->harga;}?>">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-hand-o-up"></i>Pesan
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                            </p>
                             </div>
                             <!-- /.text -->
 

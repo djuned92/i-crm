@@ -10,11 +10,11 @@
                     // $tgl_akhir = date_create($r->tgl_akhir);  
                     // $tgl_akhir = date_format($tgl_akhir,'Y-m-d');
                     // $date = date("Y-m-d");
-                    // // $tgl_akhir_tomorrow = date($tgl_akhir, strtotime('tomorrow'));
+                    // // // $tgl_akhir_tomorrow = date($tgl_akhir, strtotime('tomorrow'));
                     // if($tgl_akhir < $date):
                 ?>
                 
-                <div class="col-md-3 col-sm-4">
+                <div class="col-md-3 col-sm-4" data-animate="fadeInDown">
                     <div class="product">
                         <div class="flip-container">
                             <div class="flipper">
@@ -55,20 +55,32 @@
                                 ?>
                             </p>
                             <p class="buttons">
-                                <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>" class="btn btn-default" style="width: 150px;margin-bottom: 0px;">Lihat detail</a>
-                                <form action="<?=base_url()?>pelanggan/pesan/index/<?=$r->id_paket_wisata?>" method="POST">
-                                    <input type="hidden" name="id_pelanggan" 
-                                    value="<?php if($this->session->userdata('login') == TRUE){echo $id_pelanggan;}?>">
-                                    <input type="hidden" name="id_paket_wisata" value="<?=$r->id_paket_wisata?>">
-                                    <input type="hidden" name="tgl_pemesanan" 
-                                    value="<?=$date?>">
+                                <!-- style="width: 150px;margin-bottom: 0px;" 
+                                     style="width: 150px;margin-left: 40px;"
+                                -->
+                                <div class="row">
+                                    <div class="col-sm-5 col-sm-offset-1">
+                                        <a href="<?=base_url()?>pelanggan/detail/index/<?=$r->id_paket_wisata?>" 
+                                        class="btn btn-default">Lihat detail</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <form action="<?=base_url()?>pelanggan/pesan/index/<?=$r->id_paket_wisata?>" method="POST"
+                                        style="width: 100px;">
+                                            <input type="hidden" name="id_pelanggan" 
+                                            value="<?php if($this->session->userdata('login') == TRUE){echo $id_pelanggan;}?>">
+                                            <input type="hidden" name="id_paket_wisata" value="<?=$r->id_paket_wisata?>">
+                                            <input type="hidden" name="tgl_pemesanan" 
+                                            value="<?=$date?>">
 
-                                    <input type="hidden" name="harga_pemesanan" 
-                                    value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $r->harga;}?>">
-                                    <button type="submit" class="btn btn-primary" style="width: 150px;margin-left: 40px;">
-                                        <i class="fa fa-hand-o-up"></i>Pesan
-                                    </button>
-                                </form>
+                                            <input type="hidden" name="harga_pemesanan" 
+                                            value="<?php if($date == $promosi->tgl_promosi){ echo $harga_disc;}else{echo $r->harga;}?>">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-hand-o-up"></i>Pesan
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
                             </p>
                         </div>
                         <!-- /.text -->
@@ -89,15 +101,15 @@
                 </div>
                 
                 <?php endforeach; ?>
-               
+               <!-- endif;s -->
             </div>
             <!-- /.products -->
 
-            <div class="pages">
+            <!-- <div class="pages">
 
                <?=$pagination?>
                
-            </div>
+            </div> -->
 
 
         </div>
