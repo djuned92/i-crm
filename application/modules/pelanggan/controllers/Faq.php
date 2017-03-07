@@ -5,7 +5,7 @@ class Faq extends CI_Controller {
 
 	public function index()
 	{
-		
+		$this->template->pelanggan('faq','script_pelanggan');		
 	}
 
 }

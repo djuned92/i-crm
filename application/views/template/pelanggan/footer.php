@@ -5,13 +5,11 @@
                 <h4>Pages</h4>
 
                 <ul>
-                    <li><a href="text.html">About us</a>
+                    <li><a href="<?=base_url()?>pelanggan/about_us">Tentang Kami</a>
                     </li>
-                    <li><a href="text.html">Terms and conditions</a>
+                    <li><a href="<?=base_url()?>pelanggan/faq">FAQ</a>
                     </li>
-                    <li><a href="faq.html">FAQ</a>
-                    </li>
-                    <li><a href="contact.html">Contact us</a>
+                    <li><a href="<?=base_url()?>pelanggan/contact_us">Hubungi Kami</a>
                     </li>
                 </ul>
 
