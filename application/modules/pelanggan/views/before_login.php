@@ -1,7 +1,7 @@
 <div id="content">
     <div class="container">
 
-        <div class="col-md-12">
+        <div class="col-md-12" data-animate="fadeInDown">
 
             <div class="row" id="error-page">
                 <div class="col-sm-6 col-sm-offset-3">

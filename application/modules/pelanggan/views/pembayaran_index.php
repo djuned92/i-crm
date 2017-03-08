@@ -15,7 +15,7 @@
             </div>
         <?php endif; ?>
 
-        <div class="col-md-12">
+        <div class="col-md-12" data-animate="fadeInDown">
             <table class="table table-striped" id="myTable">
                     <thead>
                         <tr>

@@ -1,7 +1,7 @@
 <div id="content">
     <div class="container">
 
-        <div class="col-md-12">
+        <div class="col-md-12" data-animate="fadeInDown">
             <ul class="breadcrumb">
                 <li><a href="<?=base_url()?>pelanggan/home">Home</a>
                 </li>

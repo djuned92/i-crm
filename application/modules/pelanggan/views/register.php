@@ -11,7 +11,7 @@
 
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" data-animate="fadeInDown">
             <div class="box">
                 <h1>New account</h1>
 
@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" data-animate="fadeInDown">
             <div class="box">
                 <h1>Login</h1>
 

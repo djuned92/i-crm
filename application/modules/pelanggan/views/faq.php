@@ -10,7 +10,7 @@
 
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" data-animate="fadeInDown">
 
 
             <div class="box" id="contact">

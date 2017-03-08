@@ -7,7 +7,7 @@
             </ul>
         </div>
 
-        <div class="col-md-12" id="blog-listing">  
+        <div class="col-md-12" id="blog-listing" data-animate="fadeInDown">  
 
             <div class="post">
                 <h2><a href="#"><?=$paket_wisata->nama_wisata?></a></h2>

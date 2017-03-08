@@ -8,7 +8,7 @@
 
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" data-animate="fadeInDown">
 
                 <form class="form-horizontal profile" 
                 action="<?=base_url()?>pelanggan/profile/update/<?=$this->session->userdata('id_user')?>" method="POST">

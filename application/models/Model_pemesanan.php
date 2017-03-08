@@ -54,7 +54,7 @@ class Model_pemesanan extends CI_Model {
 
 	public function delete($id_pemesanan)
 	{
-		$this->db->where('id_pemesanan',$id_pemesanan);
+		$this->db->where('id_pemesanan',$id_pemesanan)->delete('pemesanan');
 	}
 	
 	public function status_segera_dibayar($id_pemesanan)

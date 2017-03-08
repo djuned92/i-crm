@@ -24,7 +24,7 @@ class Data_pemesanan extends CI_Controller {
 		$this->template->admin('data_pemesanan','script_admin',$data);
 	}
 
-	public function tersedia($id_pemesenan)
+	public function tersedia($id_pemesanan)
 	{
 		$this->load->library('email');
 
@@ -81,7 +81,7 @@ class Data_pemesanan extends CI_Controller {
 			$data = array(
 			'status'	=> 'Segera Dibayar'
 			);
-			$this->pemesanan->update($id_pemesenan, $data);
+			$this->pemesanan->update($id_pemesanan, $data);
 			$this->session->set_flashdata('update', 'Status pemesanan berhasil diperbaharui');
 			redirect('admin/data_pemesanan');
 		}
@@ -91,7 +91,7 @@ class Data_pemesanan extends CI_Controller {
 		}
 	}
 
-	public function tidak_tersedia($id_pemesenan)
+	public function tidak_tersedia($id_pemesanan)
 	{
 		$this->load->library('email');
 
@@ -138,7 +138,7 @@ class Data_pemesanan extends CI_Controller {
 			$data = array(
 				'status'	=> 'Dibatalkan'
 			);
-			$this->pemesanan->update($id_pemesenan, $data);
+			$this->pemesanan->update($id_pemesanan, $data);
 			$this->session->set_flashdata('update', 'Status pemesanan berhasil diperbaharui');
 			redirect('admin/data_pemesanan');
 		}
@@ -149,9 +149,9 @@ class Data_pemesanan extends CI_Controller {
 
 	}
 
-	public function delete($id_pemesenan)
+	public function delete($id_pemesanan)
 	{
-		$this->pemesanan->delete($id_pemesenan);
+		$this->pemesanan->delete($id_pemesanan);
 		$this->session->set_flashdata('delete', 'Data pemesanan berhasil dihapus');
 		redirect('admin/data_pemesanan');
 	}

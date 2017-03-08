@@ -16,7 +16,7 @@
             if($tgl_akhir < $date):
         ?>
 
-            <div class="col-md-6" id="blog-listing">  
+            <div class="col-md-6" id="blog-listing" data-animate="fadeInDown">  
   
                 <div class="post">
                     <h2><a href="post.html"><?=$r->nama_wisata?></a></h2>

@@ -135,7 +135,7 @@
                 <h4 class="modal-title">Pembayaran Tidak Valid</h4>
             </div>
 
-            <form action="<?=base_url()?>admin/validasi_pembayaran/valid/<?=$r->id_pemesanan?>" class="form-horizontal" method="POST">
+            <form action="<?=base_url()?>admin/validasi_pembayaran/tidak_valid/<?=$r->id_pemesanan?>" class="form-horizontal" method="POST">
                 <div class="modal-body">
                     <h4>Atas nama <strong><?=$r->nama_pemilik?></strong> pembayaran tidak valid</h4>
                 </div>
