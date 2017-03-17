@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2017 at 01:20 PM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Generation Time: Mar 18, 2017 at 12:51 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `i-crm`
@@ -26,12 +26,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `atasan`
 --
 
-CREATE TABLE IF NOT EXISTS `atasan` (
-`id_atasan` int(3) NOT NULL,
+CREATE TABLE `atasan` (
+  `id_atasan` int(3) NOT NULL,
   `id_departement` int(3) NOT NULL,
   `nama_atasan` char(25) NOT NULL,
   `nama_jabatan` char(25) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `atasan`
@@ -47,10 +47,10 @@ INSERT INTO `atasan` (`id_atasan`, `id_departement`, `nama_atasan`, `nama_jabata
 -- Table structure for table `departement`
 --
 
-CREATE TABLE IF NOT EXISTS `departement` (
-`id_departement` int(3) NOT NULL,
+CREATE TABLE `departement` (
+  `id_departement` int(3) NOT NULL,
   `nama_departement` varchar(25) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `departement`
@@ -66,8 +66,8 @@ INSERT INTO `departement` (`id_departement`, `nama_departement`) VALUES
 -- Table structure for table `karyawan`
 --
 
-CREATE TABLE IF NOT EXISTS `karyawan` (
-`id_karyawan` int(3) NOT NULL,
+CREATE TABLE `karyawan` (
+  `id_karyawan` int(3) NOT NULL,
   `id_user` int(3) NOT NULL,
   `id_atasan` int(3) NOT NULL,
   `id_departement` int(3) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `karyawan` (
   `no_telp` varchar(13) NOT NULL,
   `email` varchar(50) NOT NULL,
   `jabatan` char(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `karyawan`
@@ -92,7 +92,7 @@ INSERT INTO `karyawan` (`id_karyawan`, `id_user`, `id_atasan`, `id_departement`,
 -- Table structure for table `level`
 --
 
-CREATE TABLE IF NOT EXISTS `level` (
+CREATE TABLE `level` (
   `id_level` int(3) NOT NULL,
   `nama_level` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -113,29 +113,38 @@ INSERT INTO `level` (`id_level`, `nama_level`) VALUES
 -- Table structure for table `paket_wisata`
 --
 
-CREATE TABLE IF NOT EXISTS `paket_wisata` (
-`id_paket_wisata` int(3) NOT NULL,
+CREATE TABLE `paket_wisata` (
+  `id_paket_wisata` int(3) NOT NULL,
   `nama_wisata` char(30) NOT NULL,
   `lokasi` char(30) NOT NULL,
   `harga` int(10) NOT NULL,
   `deskripsi` text NOT NULL,
   `gambar_wisata` varchar(50) NOT NULL,
+  `rundown_acara` varchar(50) NOT NULL,
   `tgl_mulai` date NOT NULL,
   `tgl_akhir` date NOT NULL,
   `norek_perusahaan` varchar(25) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `paket_wisata`
 --
 
-INSERT INTO `paket_wisata` (`id_paket_wisata`, `nama_wisata`, `lokasi`, `harga`, `deskripsi`, `gambar_wisata`, `tgl_mulai`, `tgl_akhir`, `norek_perusahaan`, `created_at`) VALUES
-(1, 'Wisata Desert Sahara', 'Gurun Sahara', 1000000, 'Gurun Sahara Indah Sekali', 'Desert.jpg', '2017-02-25', '2017-03-25', '198999890', '0000-00-00 00:00:00'),
-(2, 'Taman Bunga', 'Belanda', 900000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Tulips1.jpg', '2017-02-19', '2017-03-02', '98888123', '2017-03-03 10:30:29'),
-(3, 'Wisata 3', 'Lokasi 3', 850000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Koala.jpg', '2017-03-06', '2017-04-06', '89889777', '2017-03-06 06:42:34'),
-(4, 'Wisata 4', 'Lokasi 4', 750000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lighthouse.jpg', '2017-03-06', '2017-04-06', '865868786', '2017-03-06 06:43:22'),
-(5, 'Wisata 5', 'Lokasi 5', 700000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Hydrangeas.jpg', '2017-03-31', '2017-04-30', '8797986', '2017-03-06 07:30:13');
+INSERT INTO `paket_wisata` (`id_paket_wisata`, `nama_wisata`, `lokasi`, `harga`, `deskripsi`, `gambar_wisata`, `rundown_acara`, `tgl_mulai`, `tgl_akhir`, `norek_perusahaan`, `created_at`) VALUES
+(1, 'Wisata Desert Sahara', 'Gurun Sahara', 1000000, 'Gurun Sahara Indah Sekali', 'Desert.jpg', '', '2017-02-25', '2017-03-25', '198999890', '0000-00-00 00:00:00'),
+(2, 'Taman Bunga', 'Belanda', 900000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Tulips1.jpg', '', '2017-02-19', '2017-03-02', '98888123', '2017-03-03 10:30:29'),
+(3, 'Wisata 3', 'Lokasi 3', 850000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Koala.jpg', '', '2017-03-06', '2017-04-06', '89889777', '2017-03-06 06:42:34'),
+(4, 'Wisata 4', 'Lokasi 4', 750000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Lighthouse.jpg', '', '2017-03-06', '2017-04-06', '865868786', '2017-03-06 06:43:22'),
+(5, 'Wisata 5', 'Lokasi 5', 700000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Hydrangeas.jpg', '', '2017-03-31', '2017-04-30', '8797986', '2017-03-06 07:30:13'),
+(12, 'asd', 'asdklj', 27000, 'asdlkj', '', '', '2017-12-31', '2017-12-31', '98888123', '2017-03-16 02:15:32'),
+(13, 'lkjads', 'alskd', 900000, 'alskdj', '', '', '2017-12-31', '2017-12-31', '89997777123', '2017-03-16 02:21:05'),
+(14, 'askdjh', 'alksjd', 27000, 'aksdlj', '', '', '2017-12-31', '2017-12-31', '98888123', '2017-03-16 02:26:40'),
+(15, 'asdlkj', 'alskdj', 109832, 'askldj', '', '', '2017-12-31', '2017-12-31', '98888123', '2017-03-16 02:35:47'),
+(16, 'lalksdj', 'lkasjd', 15123142, 'a;skdlj', '', '', '2017-12-31', '2017-12-31', '98888123', '2017-03-16 02:38:52'),
+(17, 'aslkjd', 'laksjd', 12345, 'alsdjaklsjd', '', '', '2017-12-31', '2017-12-31', '125125', '2017-03-16 02:42:47'),
+(18, 'askdlj', 'alksd', 27000, 'askdj', '', '', '2017-12-31', '2017-12-31', '98888123', '2017-03-16 03:03:55'),
+(19, 'asdkh', 'askdj', 100000, 'asdjk', 'Penguins.jpg', 'Tulips.jpg', '2017-12-31', '2017-12-31', '98888123', '2017-03-16 09:52:19');
 
 -- --------------------------------------------------------
 
@@ -143,8 +152,8 @@ INSERT INTO `paket_wisata` (`id_paket_wisata`, `nama_wisata`, `lokasi`, `harga`,
 -- Table structure for table `pelanggan`
 --
 
-CREATE TABLE IF NOT EXISTS `pelanggan` (
-`id_pelanggan` int(3) NOT NULL,
+CREATE TABLE `pelanggan` (
+  `id_pelanggan` int(3) NOT NULL,
   `id_user` int(3) NOT NULL,
   `nama` char(50) NOT NULL,
   `alamat` text NOT NULL,
@@ -153,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
   `jenis_kelamin` enum('Laki - Laki','Perempuan') NOT NULL,
   `no_telp` char(12) NOT NULL,
   `email` varchar(50) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelanggan`
@@ -162,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `pelanggan` (
 INSERT INTO `pelanggan` (`id_pelanggan`, `id_user`, `nama`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `no_telp`, `email`) VALUES
 (1, 2, 'Sri Wahyuningsih', 'Jaksel, Indonesia', 'pemalang', '1990-09-02', 'Perempuan', '8988812', 'samsudingoceng@gmail.com'),
 (2, 5, 'Ahmad Djunaedi', 'Jalan Haji Gemin, Bekasi update', 'bekasi', '1992-04-17', 'Laki - Laki', '089693401875', 'ahmad_ia3@yahoo.com'),
-(3, 6, 'Irvan Prasetya', 'Jakarta', 'Jakarta', '1992-10-31', 'Laki - Laki', '8788898', 'mamahkiki74@gmail.com');
+(3, 6, 'Irvan Prasetya', 'Jakarta', 'Jakarta', '1992-03-18', 'Laki - Laki', '8788898', 'mamahkiki74@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -170,8 +179,8 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `id_user`, `nama`, `alamat`, `tempat_la
 -- Table structure for table `pembayaran`
 --
 
-CREATE TABLE IF NOT EXISTS `pembayaran` (
-`id_pembayaran` int(3) NOT NULL,
+CREATE TABLE `pembayaran` (
+  `id_pembayaran` int(3) NOT NULL,
   `id_pelanggan` int(3) NOT NULL,
   `id_pemesanan` int(3) NOT NULL,
   `jml_transfer` int(10) NOT NULL,
@@ -181,14 +190,14 @@ CREATE TABLE IF NOT EXISTS `pembayaran` (
   `norek_pemilik` varchar(25) NOT NULL,
   `valid_pembayaran` varchar(15) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_pelanggan`, `id_pemesanan`, `jml_transfer`, `tgl_transfer`, `jam`, `nama_pemilik`, `norek_pemilik`, `valid_pembayaran`, `created_at`) VALUES
-(1, 2, 5, 900000, '2017-02-24', '20.0', 'Ahmad Djunaedi', '87777888', 'Valid', '2017-02-24 10:01:20'),
+(1, 2, 5, 900000, '2017-02-24', '20.0', 'Ahmad Djunaedi', '87777888', 'Tidak Valid', '2017-03-08 10:42:03'),
 (2, 2, 3, 1000000, '2017-03-01', '18.00', 'Ahmad Djunaedi', '090989897', 'Valid', '2017-03-03 10:40:42');
 
 -- --------------------------------------------------------
@@ -197,8 +206,8 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_pelanggan`, `id_pemesanan`, `jml_
 -- Table structure for table `pemesanan`
 --
 
-CREATE TABLE IF NOT EXISTS `pemesanan` (
-`id_pemesanan` int(3) NOT NULL,
+CREATE TABLE `pemesanan` (
+  `id_pemesanan` int(3) NOT NULL,
   `id_pelanggan` int(3) NOT NULL,
   `id_paket_wisata` int(3) NOT NULL,
   `kode_pemesanan` varchar(12) NOT NULL,
@@ -206,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `pemesanan` (
   `harga_pemesanan` int(10) NOT NULL,
   `status` varchar(25) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pemesanan`
@@ -214,8 +223,7 @@ CREATE TABLE IF NOT EXISTS `pemesanan` (
 
 INSERT INTO `pemesanan` (`id_pemesanan`, `id_pelanggan`, `id_paket_wisata`, `kode_pemesanan`, `tgl_pemesanan`, `harga_pemesanan`, `status`, `created_at`) VALUES
 (3, 2, 1, '2102201773', '2017-02-21', 1000000, 'Disetujui', '2017-03-03 10:40:54'),
-(4, 3, 2, '220220177G', '2017-02-22', 0, 'Dibatalkan', '2017-02-23 08:41:32'),
-(5, 2, 2, '23022017qA', '2017-02-23', 900000, 'Segera Dibayar', '2017-03-06 15:26:37');
+(5, 2, 2, '23022017qA', '2017-02-23', 900000, 'Dibatalkan', '2017-03-08 10:42:03');
 
 -- --------------------------------------------------------
 
@@ -223,13 +231,13 @@ INSERT INTO `pemesanan` (`id_pemesanan`, `id_pelanggan`, `id_paket_wisata`, `kod
 -- Table structure for table `personalisasi`
 --
 
-CREATE TABLE IF NOT EXISTS `personalisasi` (
-`id_personalisasi` int(3) NOT NULL,
+CREATE TABLE `personalisasi` (
+  `id_personalisasi` int(3) NOT NULL,
   `id_pelanggan` int(3) NOT NULL,
   `nama` char(25) NOT NULL,
   `tgl_personal` date NOT NULL,
   `isi` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -237,22 +245,22 @@ CREATE TABLE IF NOT EXISTS `personalisasi` (
 -- Table structure for table `promosi`
 --
 
-CREATE TABLE IF NOT EXISTS `promosi` (
-`id_promosi` int(3) NOT NULL,
+CREATE TABLE `promosi` (
+  `id_promosi` int(3) NOT NULL,
   `id_paket_wisata` int(3) NOT NULL,
   `nama` char(30) NOT NULL,
   `isi` text NOT NULL,
   `tgl_promosi` date NOT NULL,
   `potongan_harga` decimal(5,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `promosi`
 --
 
 INSERT INTO `promosi` (`id_promosi`, `id_paket_wisata`, `nama`, `isi`, `tgl_promosi`, `potongan_harga`, `created_at`) VALUES
-(1, 1, 'Gurun Sahara Promosi', 'Gurun Shara', '2017-02-28', '10.00', '2017-02-19 07:47:30'),
+(1, 1, 'Gurun Sahara Promosi', 'Gurun Shara', '2017-03-18', '10.00', '2017-03-17 17:00:01'),
 (2, 2, 'Promosi Taman Bunga', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse', '2017-03-06', '50.00', '2017-03-06 11:13:55');
 
 -- --------------------------------------------------------
@@ -261,15 +269,15 @@ INSERT INTO `promosi` (`id_promosi`, `id_paket_wisata`, `nama`, `isi`, `tgl_prom
 -- Table structure for table `ulasan`
 --
 
-CREATE TABLE IF NOT EXISTS `ulasan` (
-`id_ulasan` int(3) NOT NULL,
+CREATE TABLE `ulasan` (
+  `id_ulasan` int(3) NOT NULL,
   `id_pelanggan` int(3) NOT NULL,
   `id_paket_wisata` int(3) NOT NULL,
   `id_pemesanan` int(3) NOT NULL,
   `isi_kritik` text NOT NULL,
   `isi_testimoni` text NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ulasan`
@@ -285,13 +293,13 @@ INSERT INTO `ulasan` (`id_ulasan`, `id_pelanggan`, `id_paket_wisata`, `id_pemesa
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-`id_user` int(3) NOT NULL,
+CREATE TABLE `user` (
+  `id_user` int(3) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(64) NOT NULL,
   `level` int(3) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -313,67 +321,67 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`, `created_at`) VA
 -- Indexes for table `atasan`
 --
 ALTER TABLE `atasan`
- ADD PRIMARY KEY (`id_atasan`);
+  ADD PRIMARY KEY (`id_atasan`);
 
 --
 -- Indexes for table `departement`
 --
 ALTER TABLE `departement`
- ADD PRIMARY KEY (`id_departement`);
+  ADD PRIMARY KEY (`id_departement`);
 
 --
 -- Indexes for table `karyawan`
 --
 ALTER TABLE `karyawan`
- ADD PRIMARY KEY (`id_karyawan`);
+  ADD PRIMARY KEY (`id_karyawan`);
 
 --
 -- Indexes for table `paket_wisata`
 --
 ALTER TABLE `paket_wisata`
- ADD PRIMARY KEY (`id_paket_wisata`);
+  ADD PRIMARY KEY (`id_paket_wisata`);
 
 --
 -- Indexes for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
- ADD PRIMARY KEY (`id_pelanggan`);
+  ADD PRIMARY KEY (`id_pelanggan`);
 
 --
 -- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
- ADD PRIMARY KEY (`id_pembayaran`);
+  ADD PRIMARY KEY (`id_pembayaran`);
 
 --
 -- Indexes for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
- ADD PRIMARY KEY (`id_pemesanan`);
+  ADD PRIMARY KEY (`id_pemesanan`);
 
 --
 -- Indexes for table `personalisasi`
 --
 ALTER TABLE `personalisasi`
- ADD PRIMARY KEY (`id_personalisasi`);
+  ADD PRIMARY KEY (`id_personalisasi`);
 
 --
 -- Indexes for table `promosi`
 --
 ALTER TABLE `promosi`
- ADD PRIMARY KEY (`id_promosi`);
+  ADD PRIMARY KEY (`id_promosi`);
 
 --
 -- Indexes for table `ulasan`
 --
 ALTER TABLE `ulasan`
- ADD PRIMARY KEY (`id_ulasan`);
+  ADD PRIMARY KEY (`id_ulasan`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
- ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -383,57 +391,57 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `atasan`
 --
 ALTER TABLE `atasan`
-MODIFY `id_atasan` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_atasan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `departement`
 --
 ALTER TABLE `departement`
-MODIFY `id_departement` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_departement` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_karyawan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `paket_wisata`
 --
 ALTER TABLE `paket_wisata`
-MODIFY `id_paket_wisata` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_paket_wisata` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-MODIFY `id_pelanggan` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_pelanggan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-MODIFY `id_pembayaran` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_pembayaran` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-MODIFY `id_pemesanan` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_pemesanan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `personalisasi`
 --
 ALTER TABLE `personalisasi`
-MODIFY `id_personalisasi` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_personalisasi` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `promosi`
 --
 ALTER TABLE `promosi`
-MODIFY `id_promosi` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_promosi` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `ulasan`
 --
 ALTER TABLE `ulasan`
-MODIFY `id_ulasan` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_ulasan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id_user` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

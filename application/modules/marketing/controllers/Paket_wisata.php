@@ -39,10 +39,11 @@ class Paket_wisata extends CI_Controller {
 	        $config['max_size']             = 1024*10; // 10 mb
 	        $config['max_width']            = 2000;
 	        $config['max_height']           = 1500;
-			
+
+
 			$this->upload->initialize($config); // $this->load->library('upload', $config) karena gk bisa. pake yang $this->upload->initialize($config);
 
-	       	if ( ! $this->upload->do_upload('userfile'))
+	       	if ( ! $this->upload->do_upload('gambar_wisata') && ! $this->upload->do_upload('rundown_acara'))
 	        {
 	        	//file gagal di upload -> kembali ke form tambah
 	        	$error = array('error' => $this->upload->display_errors());
@@ -50,16 +51,20 @@ class Paket_wisata extends CI_Controller {
 	        }
 	        else
 	        {
+	        	$gambar_wisata = $_FILES['gambar_wisata']['name'];
+	        	$rundown_acara = $_FILES['rundown_acara']['name'];
 				$data = array (
 					'nama_wisata'		=> $this->input->post('nama_wisata'),
 					'lokasi'			=> $this->input->post('lokasi'),
 					'harga'				=> $this->input->post('harga'),
 					'deskripsi'			=> $this->input->post('deskripsi'),
-					'gambar_wisata'		=> $this->upload->data('file_name'),
+					'gambar_wisata'		=> $gambar_wisata,
+					'rundown_acara'		=> $rundown_acara,
 					'tgl_mulai'			=> $this->input->post('tgl_mulai'),
 					'tgl_akhir'			=> $this->input->post('tgl_akhir'),
 					'norek_perusahaan'	=> $this->input->post('norek_perusahaan'),
 				);
+				// return var_dump($data);
 				$this->paket_wisata->add($data);
 				$this->session->set_flashdata('add', 'Tempat wisata berhasil ditambah');
 				redirect('marketing/paket_wisata');
@@ -79,7 +84,7 @@ class Paket_wisata extends CI_Controller {
 		} 
 		else 
 		{
-			if ($_FILES['userfile']['name'] != '') // dengan foto disi
+			if ($_FILES['gambar_wisata']['name'] != '' && $_FILES['rundown_acara']['name'] != '' ) // dengan foto disi
 			{	
 				$config['upload_path']          = './assets/img/';
 		        $config['allowed_types']        = 'jpg|png';
@@ -89,7 +94,7 @@ class Paket_wisata extends CI_Controller {
 				
 				$this->upload->initialize($config); // $this->load->library('upload', $config) karena gk bisa. pake yang $this->upload->initialize($config);
 
-		       	if ( ! $this->upload->do_upload('userfile'))
+		       	if ( ! $this->upload->do_upload('gambar_wisata') && ! $this->upload->do_upload('rundown_acara') )
 		        {
 		        	//file gagal di upload -> kembali ke form tambah
 		        	$error = array('error' => $this->upload->display_errors());
@@ -97,16 +102,20 @@ class Paket_wisata extends CI_Controller {
 		        }
 		        else
 		        {
+		        	$gambar_wisata = $_FILES['gambar_wisata']['name'];
+	        		$rundown_acara = $_FILES['rundown_acara']['name'];
 					$data = array (
 						'nama_wisata'		=> $this->input->post('nama_wisata'),
 						'lokasi'			=> $this->input->post('lokasi'),
 						'harga'				=> $this->input->post('harga'),
 						'deskripsi'			=> $this->input->post('deskripsi'),
-						'gambar_wisata'		=> $this->upload->data('file_name'),
+						'gambar_wisata'		=> $gambar_wisata,
+						'rundown_acara'		=> $rundown_acara,
 						'tgl_mulai'			=> $this->input->post('tgl_mulai'),
 						'tgl_akhir'			=> $this->input->post('tgl_akhir'),
 						'norek_perusahaan'	=> $this->input->post('norek_perusahaan'),
 					);
+					// return var_dump($data);
 					$this->paket_wisata->update($id_paket_wisata, $data);
 					$this->session->set_flashdata('update', 'Tempat wisata berhasil diperbaharui');
 					redirect('marketing/paket_wisata');

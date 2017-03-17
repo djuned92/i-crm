@@ -11,6 +11,15 @@ class Model_paket_wisata extends CI_Model {
 						->get();
 	}
 
+	public function get_limit_4()
+	{
+		return $this->db->select('pw.*')
+						->from('paket_wisata as pw')
+						->order_by('pw.id_paket_wisata','RANDOM')
+						->limit(4)
+						->get();
+	}
+
 	public function get_by_id($id_paket_wisata)
 	{
 		return $this->db->select('pw.*')

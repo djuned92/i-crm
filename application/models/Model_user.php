@@ -13,6 +13,14 @@ class Model_user extends CI_Model{
 						->get();
 	}
 
+	public function get_all($where)
+	{
+		return $this->db->select('u.*')
+						->from('user as u')
+						->where($where)
+						->get();
+	}
+
 	public function add($data)
 	{
 		$this->db->insert('user', $data);

@@ -215,3 +215,121 @@
         });
     });
 </script>
+
+<!-- chating -->
+<script type="text/javascript">
+ $(document).ready(function(){
+    //getChat(0);
+    $("#user").click(function(){
+        $("#id_last_chat").val('0');
+    });
+    
+    setInterval(function(){ 
+        if($("#id_user").val() > 0){
+            //getLastId($("#id_user").val(),$("#id_last_chat").val()); 
+            //getChat($("#id_user").val(),$("#id_last_chat").val()); 
+            getChatAll($("#id_user").val(),$("#id_last_chat").val());
+            autoScroll();
+        }else{
+            
+        }
+    },3000);
+});
+
+function getChatAll(id_user,id_last_chat){
+    
+    $.ajax({
+        url     : "<?=site_url('pelanggan/chat/getChatAll')?>",
+        type    : 'POST',
+        dataType: 'html',
+        data    : {id_user:id_user,id_last_chat:id_last_chat},
+        beforeSend  : function(){
+            $("#loading").show();
+        },
+        success : function(result){
+            $("#loading").hide();
+            $("#chat-box").html(result);
+            $(".panel-footer").show();
+            
+            autoScroll();
+            document.getElementById('isi').focus();
+        }
+    });
+}
+
+function getChat(id_user,id_last_chat){
+   
+    
+    $.ajax({
+        url     : "<?php echo site_url('pelanggan/chat/getChat') ?>",
+        type    : 'POST',
+        dataType: 'html',
+        data    : {id_user:id_user,id_last_chat:id_last_chat},
+        beforeSend  : function(){
+            $("#loading").show();
+        },
+        success : function(result){
+            $("#loading").hide();
+            if(id_user != $("#id_user").val() ){
+                $("#chat-box").html(result);
+            }else{
+                $("#chat-box").append(result);
+            }
+            $(".panel-footer").show();
+            document.getElementById('isi').focus();
+        }
+    });
+}
+
+function getLastId(id_user,id_last_chat){
+    $.ajax({
+        url     : "<?php echo site_url('pelanggan/chat/getLastId') ?>",
+        type    : 'POST',
+        dataType: 'json',
+        data    : {id_user:id_user,id_last_chat:id_last_chat},
+        beforeSend  : function(){
+            
+        },
+        success : function(result){
+            $("#id_last_chat").val(result.id);
+        }
+    });
+}
+
+function sendMessage(){
+    var isi   = $("#isi").val();
+    var id_user = $("#id_user").val();
+    
+    
+    if(isi == ''){
+        document.getElementById('isi').focus();
+    }else{
+        $.ajax({
+            url     : "<?php echo site_url('pelanggan/chat/sendMessage') ?>",
+            type    : 'POST',
+            dataType: 'json',
+            data    : {id_user:id_user,isi:isi},
+            beforeSend  : function(){
+            },
+            success : function(result){
+                getChat($("#id_user").val(),$("#id_last_chat").val());
+                getLastId($("#id_user").val(),$("#id_last_chat").val()); 
+                $("#isi").val('');
+                getChatAll($("#id_user").val(),$("#id_last_chat").val());
+                autoScroll();
+
+            }
+        });
+    }
+}
+
+function autoScroll(){
+    var elem = document.getElementById('box');
+    elem.scrollTop = elem.scrollHeight;
+}
+
+function aktifkan(i){
+    $("li").removeClass("active");
+    $("#aktif-"+i).addClass("active");
+}
+</script>

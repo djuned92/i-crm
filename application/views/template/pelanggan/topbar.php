@@ -1,17 +1,44 @@
 <div id="top">
     <div class="container">
-        <div class="col-md-6 offer" data-animate="fadeInDown">
-            <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a>
-        </div>
         <?php if($this->session->userdata('login') == TRUE): ?>
+            <div class="col-md-6 offer" data-animate="fadeInDown">
+                <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">
+                    PT. Persada Duta Beliton
+                </a>
+                <?php 
+                    $tgl_lahir = date_create($tanggal_lahir);
+                    $tgl_lahir = date_format($tgl_lahir,'m-d');
+                    $date = date('m-d');
+                    if($tgl_lahir == $date):
+                ?>
+                    <a href="#">Harga special dihari lahir anda</a>
+                <?php endif;?>  
+            </div>
+            
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
+                    <?php 
+                        $tgl_lahir = date_create($tanggal_lahir);
+                        $tgl_lahir = date_format($tgl_lahir,'m-d');
+                        $date = date('m-d');
+                        if($tgl_lahir == $date):
+                    ?>
+                    <li>
+                        <a href="#halo">Happy Birthday <?=$nama?></a>
+                    </li>
+                    <?php else:?>
                     <li>
                         <a href="#halo">Halo <?=$nama?></a>
                     </li>
+                    <?php endif;?>
                 </ul>
             </div>
         <?php else:?>
+        <div class="col-md-6 offer" data-animate="fadeInDown">
+        <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">
+            PT. Persada Duta Beliton
+        </a>
+        </div>
         <div class="col-md-6" data-animate="fadeInDown">
             <ul class="menu">
                 <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>

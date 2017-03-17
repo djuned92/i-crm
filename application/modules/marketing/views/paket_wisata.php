@@ -204,6 +204,13 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Rundown Acara</td>
+                                    <td>
+                                        <img src="<?=base_url()?>assets/img/<?=$r->rundown_acara?>" class="img-rounded" 
+                                        style="width:140px; height:120px;">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Harga</td>
                                     <td>Rp. <?=$r->harga?></td>
                                 </tr>

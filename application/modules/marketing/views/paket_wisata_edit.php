@@ -31,7 +31,14 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label">Gambar Wisata</label>
                         <div class="col-md-9">
-                            <input type="file" name="userfile" class="form-control">
+                            <input type="file" name="gambar_wisata" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Rundown Acara</label>
+                        <div class="col-md-9">
+                            <input type="file" name="rundown_acara" class="form-control">
                         </div>
                     </div>
 

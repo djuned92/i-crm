@@ -15,7 +15,7 @@ class Detail extends CI_Controller {
 	public function index($id_paket_wisata)
 	{
 		$data['detail_wisata'] = $this->paket_wisata->get_by_id($id_paket_wisata)->row();
-		$data['paket_wisata'] = $this->paket_wisata->get_all()->result();
+		$data['paket_wisata'] = $this->paket_wisata->get_limit_4()->result();
 		$this->template->pelanggan('detail','script_pelanggan',$data);
 	}
 

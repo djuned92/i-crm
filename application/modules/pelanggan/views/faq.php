@@ -14,10 +14,10 @@
 
 
             <div class="box" id="contact">
-                <h1>Frequently asked questions</h1>
+                <h1>Hubungi Kami</h1>
 
                 <p class="lead">Apa itu FAQ? FAQ adalah singkatan dari Frequently Asked Questions yakni sebuah daftar pertanyaan dan jawaban yang biasa ditanyakan kepada pemilik suatu website/toko online. Nah sahabat-sahabat sekalian, toko online kami juga memiliki fasilitas FAQ ini, sehingga sebelum sahabat-sahabat sekalian menghubungi tim kami, sahabat-sahabat bisa baca dulu FAQ berikut ini.</p>
-                <p>Mudah-mudahan cukup dengan membaca FAQ ini, pertanyaan-pertanyaan sahabat-sahabat sekalian sudah bisa terjawab. Akan tetapi jika belum ketemu jawabannya atau ada yang kurang jelas silakan hubungi langsung tim toko online kami.</p>
+                <p class="lead">Mudah-mudahan cukup dengan membaca FAQ ini, pertanyaan-pertanyaan sahabat-sahabat sekalian sudah bisa terjawab. Akan tetapi jika belum ketemu jawabannya atau ada yang kurang jelas silakan hubungi langsung tim toko online kami.</p>
                 <p>Berikut FAQ di Persada Holiday.</p>
 
                 <hr>
