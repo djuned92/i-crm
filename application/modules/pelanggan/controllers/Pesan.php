@@ -25,7 +25,7 @@ class Pesan extends CI_Controller {
         $config['smtp_host'] = 'ssl://smtp.gmail.com';
         $config['smtp_port'] = '465';
         $config['smtp_user'] = 'ahmaddjunaedi92@gmail.com'; //bangzafran445@gmail.com
-        $config['smtp_pass'] = 'junjunned92'; //bastol1234567 
+        $config['smtp_pass'] = 'junjunned!92'; //bastol1234567 
         // $config['protocol'] = 'mail';
         $config['mailpath'] = '/usr/sbin/sendmail';
         $config['mailtype'] = 'html';
@@ -58,7 +58,7 @@ class Pesan extends CI_Controller {
 		Atas perhatiannya kami ucapkan terima kasih <br/><br/><br/>
 		PT. Persada Duta Beliton";
 
-		$this->email->from('');
+		$this->email->from('ahmaddjunaedi92@gmail.com','Ahmad Djunaedi');
 		$this->email->to($to_email);
 		$this->email->subject($subject);
 		$this->email->message($message);

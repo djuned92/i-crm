@@ -26,6 +26,11 @@
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
                         <strong><?php echo $this->session->flashdata('update'); ?></strong>
                     </div>
+                <?php elseif($this->session->flashdata('blast')):?>
+                    <div class="alert alert-info">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong><?php echo $this->session->flashdata('blast'); ?></strong>
+                    </div>
                 <?php elseif($this->session->flashdata('delete')):?>
                     <div class="alert alert-info">
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -284,11 +289,12 @@
                 <h4 class="modal-title">Promosi Semua Pelanggan</h4>
             </div>
 
-            <form action="<?=base_url()?>marketing/paket_wisata/send_email" class="form-horizontal" method="POST">
+            <form action="<?=base_url()?>marketing/promosi/send_email" class="form-horizontal" method="POST">
                 
                 <input type="hidden" name="potongan_harga" value="<?=$r->potongan_harga?>">
                 <input type="hidden" name="id_paket_wisata" value="<?=$r->id_paket_wisata?>">
                 <input type="hidden" name="tgl_promosi" value="<?=$r->tgl_promosi?>">
+                <input type="hidden" name="isi" value="<?=$r->isi?>">
 
                 <div class="modal-body">
                     <h4>Promosi Paket Wisata <strong><?=$r->nama_wisata?> Kesemua Pelanggan ?</strong></h4>

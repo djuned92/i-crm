@@ -7,17 +7,17 @@
             </ul>
         </div>
 
-        <?php 
+        <?php
             foreach($paket_wisata as $r):
-            $tgl_akhir = date_create($r->tgl_akhir);  
-            $tgl_akhir = date_format($tgl_akhir,'Y-m-d');
-            $date = date("Y-m-d");
-            // $tgl_akhir_tomorrow = date($tgl_akhir, strtotime('tomorrow'));
-            if($tgl_akhir < $date):
+            // $tgl_akhir = date_create($r->tgl_akhir);
+            // $tgl_akhir = date_format($tgl_akhir,'Y-m-d');
+            // $date = date("Y-m-d");
+            // // $tgl_akhir_tomorrow = date($tgl_akhir, strtotime('tomorrow'));
+            // if($tgl_akhir < $date):
         ?>
 
-            <div class="col-md-6" id="blog-listing" data-animate="fadeInDown">  
-  
+            <div class="col-md-6" id="blog-listing" data-animate="fadeInDown">
+
                 <div class="post">
                     <h2><a href="post.html"><?=$r->nama_wisata?></a></h2>
                     <hr>
@@ -27,7 +27,7 @@
                         </a>
                     </div>
                     <p class="intro">
-                        <?php 
+                        <?php
                             $deskripsi = word_limiter($r->deskripsi, 8);
                             echo $deskripsi;
                         ?>
@@ -37,11 +37,11 @@
                             <button class="btn btn-md btn-primary"><i class="fa fa-smile-o"></i> Lihat Testimoni
                             </button>
                         </p>
-                    </a> 
+                    </a>
                 </div>
 
             </div>
-        <?php endif; endforeach;?>
+        <?php  endforeach;?> <!-- endif; -->
     </div>
 </div>
 <!-- /#content -->

@@ -21,6 +21,14 @@ class Model_user extends CI_Model{
 						->get();
 	}
 
+	public function get_by_id($id_user)
+	{
+		return $this->db->select('u.*')
+						->from('user as u')
+						->where('u.id_user',$id_user)
+						->get();
+	}
+
 	public function add($data)
 	{
 		$this->db->insert('user', $data);

@@ -28,11 +28,11 @@ class Paket_wisata extends CI_Controller {
 		$this->load->library('upload');
 
 		$this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required'); // trigger bootstrap formvalidation
-		if ($this->form_validation->run() == FALSE) 
+		if ($this->form_validation->run() == FALSE)
 		{
 			$this->template->marketing('paket_wisata_add','script_marketing');
-		} 
-		else 
+		}
+		else
 		{
 			$config['upload_path']          = './assets/img/';
 	        $config['allowed_types']        = 'jpg|png';
@@ -63,6 +63,8 @@ class Paket_wisata extends CI_Controller {
 					'tgl_mulai'			=> $this->input->post('tgl_mulai'),
 					'tgl_akhir'			=> $this->input->post('tgl_akhir'),
 					'norek_perusahaan'	=> $this->input->post('norek_perusahaan'),
+					'lokal_agen'		=> $this->input->post('lokal_agen'),
+					'no_telp_lokal_agen'	=> $this->input->post('no_telp_lokal_agen'),
 				);
 				// return var_dump($data);
 				$this->paket_wisata->add($data);
@@ -77,21 +79,21 @@ class Paket_wisata extends CI_Controller {
 		$this->load->library('upload');
 
 		$this->form_validation->set_rules('nama_wisata', 'Nama Wisata', 'required'); // trigger bootstrap formvalidation
-		if ($this->form_validation->run() == FALSE) 
+		if ($this->form_validation->run() == FALSE)
 		{
 			$data['paket_wisata'] = $this->paket_wisata->get_by_id($id_paket_wisata)->row();
 			$this->template->marketing('paket_wisata_edit','script_marketing',$data);
-		} 
-		else 
+		}
+		else
 		{
 			if ($_FILES['gambar_wisata']['name'] != '' && $_FILES['rundown_acara']['name'] != '' ) // dengan foto disi
-			{	
+			{
 				$config['upload_path']          = './assets/img/';
 		        $config['allowed_types']        = 'jpg|png';
 		        $config['max_size']             = 1024*10; // 10 mb
 		        $config['max_width']            = 2000;
 		        $config['max_height']           = 1500;
-				
+
 				$this->upload->initialize($config); // $this->load->library('upload', $config) karena gk bisa. pake yang $this->upload->initialize($config);
 
 		       	if ( ! $this->upload->do_upload('gambar_wisata') && ! $this->upload->do_upload('rundown_acara') )
@@ -114,6 +116,8 @@ class Paket_wisata extends CI_Controller {
 						'tgl_mulai'			=> $this->input->post('tgl_mulai'),
 						'tgl_akhir'			=> $this->input->post('tgl_akhir'),
 						'norek_perusahaan'	=> $this->input->post('norek_perusahaan'),
+						'lokal_agen'		=> $this->input->post('lokal_agen'),
+						'no_telp_lokal_agen'	=> $this->input->post('no_telp_lokal_agen'),
 					);
 					// return var_dump($data);
 					$this->paket_wisata->update($id_paket_wisata, $data);
@@ -131,6 +135,8 @@ class Paket_wisata extends CI_Controller {
 					'tgl_mulai'			=> $this->input->post('tgl_mulai'),
 					'tgl_akhir'			=> $this->input->post('tgl_akhir'),
 					'norek_perusahaan'	=> $this->input->post('norek_perusahaan'),
+					'lokal_agen'		=> $this->input->post('lokal_agen'),
+					'no_telp_lokal_agen'	=> $this->input->post('no_telp_lokal_agen'),
 				);
 				$this->paket_wisata->update($id_paket_wisata, $data);
 				$this->session->set_flashdata('update', 'Tempat wisata berhasil diperbaharui');

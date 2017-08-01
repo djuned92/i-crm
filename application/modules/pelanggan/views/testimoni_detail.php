@@ -7,20 +7,20 @@
             </ul>
         </div>
 
-        <div class="col-md-12" id="blog-listing" data-animate="fadeInDown">  
+        <div class="col-md-12" id="blog-listing" data-animate="fadeInDown">
 
             <div class="post">
                 <h2><a href="#"><?=$paket_wisata->nama_wisata?></a></h2>
                 <hr>
                <!--  <p class="date-comments">
-                    <a href="post.html"><i class="fa fa-calendar-o"></i> 
+                    <a href="post.html"><i class="fa fa-calendar-o"></i>
                         <?php
                             $tanggal = $paket_wisata->tgl_mulai;
                             $data = strtotime($tanggal);
                             // $w = date('w', $data); // hari
                             $j = date('j', $data); // tanggal
                             $n = date('n', $data); // bulan
-                        
+
                             // $hari = array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
                             $bulan = array('','Januari','Febuari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Novovember','Desember');
                             // echo $hari[$w]. ", ".$j." ".$bulan[$n]." ".date('y');
@@ -36,30 +36,35 @@
                 </div>
                 <h2>Lokasi <?=$paket_wisata->lokasi?></h2>
                 <blockquote><p class="intro"><?=$paket_wisata->deskripsi?></p></blockquote>
-                
+
                 <hr>
                 <div id="comments" data-animate="fadeInUp">
 
-                    <?php 
+                    <?php
                         $testimoni = $this->ulasan->get_testimoni($paket_wisata->id_paket_wisata)->result();
                         foreach($testimoni as $datas):
+                        if($testimoni != null):
                     ?>
                         <div class="row comment">
                             <div class="col-sm-3 col-md-2 text-center-xs">
                                 <p>
-                                    <img src="<?=base_url()?>assets/obaju/img/blog-avatar2.jpg" class="img-responsive img-circle" alt="">
+									<?php
+										$img = ["bruno.jpg","junot.jpg","erros.jpg","andra.jpg","arman.jpg","piyu.jpg","deva.jpg","duta.jpg","iwan.jpg","vino.jpg"];
+										$random = array_rand($img);
+									?>
+                                    <img src="<?=base_url()?>assets/obaju/img/<?=$img[$random]?>" class="img-responsive img-circle" alt="">
                                 </p>
                             </div>
                             <div class="col-sm-9 col-md-10">
                                 <h5><?=$datas->nama?></h5>
-                                <p class="posted"><i class="fa fa-clock-o"></i> 
-                                    <?php 
+                                <p class="posted"><i class="fa fa-clock-o"></i>
+                                    <?php
                                         echo $tanggal = $datas->create_at;
                                         // $data = strtotime($tanggal);
                                         // // $w = date('w', $data); // hari
                                         // $j = date('j', $data); // tanggal
                                         // $n = date('n', $data); // bulan
-                                    
+
                                         // // $hari = array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
                                         // $bulan = array('','Januari','Febuari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Novovember','Desember');
                                         // // echo $hari[$w]. ", ".$j." ".$bulan[$n]." ".date('y');
@@ -69,9 +74,18 @@
                                 <p><?=$datas->isi_testimoni?></p>
                             </div>
                         </div>
-                    <?php endforeach;?>
+                    <?php endif; endforeach;?>
 
                 </div>
+                <?php if($testimoni == null):?>
+                    <div id="comments" data-animate="fadeInUp">
+                        <div class="row comment">
+                            <div class="col-sm-3 col-md-3 text-center-xs">
+                                <h4>Belum ada testimoni</h4>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif;?>
             </div>
         </div>
     </div>

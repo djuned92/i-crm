@@ -23,14 +23,14 @@ class Chat extends CI_Controller {
 
 	public function getChat()
 	{
-		$to_user = $this->input->post('id_user',TRUE); // chat to user
+		$to_user = $this->input->post('from_id_user',TRUE); // chat to user
 		$from_user = $this->session->userdata('id_user'); // chat from user
-		$id_last_chat = $this->input->post('id_last_chat'); // last chat id
+		// $id_last_chat = $this->input->post('id_last_chat'); // last chat id
 
-		$where = "(((c.id_karyawan = $to_user AND c.id_pelanggan = $from_user) OR (c.id_pelanggan = $to_user AND c.id_karyawan = $from_user)))";
+		$where = "(((c.from_id_user = $from_user AND c.to_id_user = $to_user) OR (c.to_id_user = $from_user AND c.from_id_user = $to_user)))";
 		$chat = $this->chat->get_all($where);
 		$data = array(
-			'id_last_chat'	=> $id_last_chat,
+			// 'id_last_chat'	=> $id_last_chat,
 			'id_user'	=> $to_user,
 			'chat'		=> $chat
 		);
@@ -39,15 +39,15 @@ class Chat extends CI_Controller {
 
 	public function getChatAll()
 	{
-		$to_user = $this->input->post('id_user'); // chat to user
+		$to_user = $this->input->post('from_id_user',TRUE); // chat to user
 		$from_user = $this->session->userdata('id_user'); // chat from user
-		$id_last_chat = $this->input->post('id_last_chat'); // last chat id
+		// $id_last_chat = $this->input->post('id_last_chat'); // last chat id
 
 
-		$where = "(((c.id_karyawan = $to_user AND c.id_pelanggan = $from_user) OR (c.id_pelanggan = $to_user AND c.id_karyawan = $from_user)))";
+		$where = "(((c.from_id_user = $from_user AND c.to_id_user = $to_user) OR (c.to_id_user = $from_user AND c.from_id_user = $to_user)))";
 		$chat = $this->chat->get_all($where);
 		
-		$where2 = "(((c.id_karyawan = $to_user AND c.id_pelanggan = $from_user) OR (c.id_pelanggan = $to_user AND c.id_karyawan = $from_user)))";
+		$where2 = "(((c.to_id_user = $from_user AND c.from_id_user = $to_user) OR (c.from_id_user = $from_user AND c.to_id_user = $to_user)))";
 		$get_id = $this->chat->get_last_id($where2);
 
 				
@@ -63,11 +63,11 @@ class Chat extends CI_Controller {
 
 	public function getLastId()
 	{
-		$to_user = $this->input->post('id_user',TRUE); // chat to user
+		$to_user = $this->input->post('from_id_user',TRUE); // chat to user
 		$from_user = $this->session->userdata('id_user'); // chat from user
-		$id_last_chat = $this->input->post('id_last_chat'); // last chat id
+		// $id_last_chat = $this->input->post('id_last_chat'); // last chat id
 
-		$where = "(((c.id_karyawan = $to_user AND c.id_pelanggan = $from_user) OR (c.id_pelanggan = $to_user AND c.id_karyawan = $from_user)))";
+		$where = "(((c.from_id_user = $from_user AND c.to_id_user = $to_user) OR (c.to_id_user = $from_user AND c.from_id_user = $to_user)))";
 		
 		$get_id = $this->chat->get_last_id($where);
 		echo json_encode(array(
@@ -77,28 +77,19 @@ class Chat extends CI_Controller {
 
 	public function sendMessage()
 	{
-		$to_user = $this->input->post('id_user',TRUE); // chat to user
+		$to_user = $this->input->post('to_id_user',TRUE); // chat to user
 		$from_user = $this->session->userdata('id_user'); // chat from user
+		// $id_last_chat = $this->input->post('id_last_chat'); // last chat id
 
 		$data = array(
-			'id_pelanggan'	=> $from_user,
-			'id_karyawan'	=> $to_user,
+			'from_id_user'	=> $from_user,
+			'to_id_user'	=> $to_user,
 			// 'id_karyawan'	=> '1',
-			'isi'			=> $this->input->post('isi')
+			'message'			=> $this->input->post('message')
 		);
 		$q = $this->chat->add($data);
 
-		if($q)
-		{
-			$rs = 1;
-		}
-		else
-		{
-			$rs = 2;
-		}
-		echo json_encode(array(
-			'result'	=> $rs
-		));
+		echo json_encode($q);
 	}
 
 }

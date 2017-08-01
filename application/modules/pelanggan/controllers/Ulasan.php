@@ -27,7 +27,7 @@ class Ulasan extends CI_Controller {
 		$pelanggan = $this->pelanggan->get_by_id($id_user)->row();
 		$id_pelanggan = $pelanggan->id_pelanggan;
 
-		// $tgl_akhir = date_create($pemesanan->tgl_akhir);  
+		// $tgl_akhir = date_create($pemesanan->tgl_akhir);
 		// $tgl_akhir = date_format($tgl_akhir,'Y-m-d');
 		// $tgl_akhir_tomorrow = date($tgl_akhir, strtotime('tomorrow'));
 
@@ -39,18 +39,19 @@ class Ulasan extends CI_Controller {
 	public function add($id_pemesanan = NULL)
 	{
 		$this->form_validation->set_rules('isi_kritik', 'Isi Kritik', 'required');
-		if ($this->form_validation->run() == FALSE) 
+		if ($this->form_validation->run() == FALSE)
 		{
 			$data['paket_wisata'] = $this->pemesanan->ulasan($id_pemesanan)->row();
 			// return var_dump($data);
 			$this->template->pelanggan('ulasan_add','script_pelanggan',$data);
-		} 
-		else 
+		}
+		else
 		{
 			$data = array(
 				'id_pemesanan'		=> $this->input->post('id_pemesanan'),
 				'id_paket_wisata'	=> $this->input->post('id_paket_wisata'),
 				'id_pelanggan'		=> $this->input->post('id_pelanggan'),
+				'rating'			=> $this->input->post('rating'),
 				'isi_kritik'		=> $this->input->post('isi_kritik'),
 				'isi_testimoni'		=> $this->input->post('isi_testimoni')
 			);

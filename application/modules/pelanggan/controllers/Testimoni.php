@@ -15,8 +15,8 @@ class Testimoni extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('text');
-		$data['paket_wisata'] = $this->paket_wisata->get_all()->result();
-		$this->template->pelanggan('testimoni','script_pelanggan',$data);		
+		$data['paket_wisata'] = $this->paket_wisata->ulasan_all()->result();
+		$this->template->pelanggan('testimoni','script_pelanggan',$data);
 	}
 
 	public function detail($id_paket_wisata)

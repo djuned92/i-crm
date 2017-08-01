@@ -58,7 +58,11 @@
                         <div class="row comment">
                             <div class="col-sm-3 col-md-2 text-center-xs">
                                 <p>
-                                    <img src="<?=base_url()?>assets/obaju/img/blog-avatar2.jpg" class="img-responsive img-circle" alt=""
+								<?php 
+										$img = ["bruno.jpg","junot.jpg","erros.jpg","andra.jpg","arman.jpg","piyu.jpg","deva.jpg","duta.jpg","iwan.jpg","vino.jpg"];
+										$random = array_rand($img);
+									?>
+                                    <img src="<?=base_url()?>assets/obaju/img/<?=$img[$random]?>" class="img-responsive img-circle" alt=""
                                     style="height: 120px;height: 120px;">
                                 </p>
                             </div>

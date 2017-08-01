@@ -8,7 +8,8 @@ class Detail extends CI_Controller {
 		parent::__construct();
 		$this->load->model(array(
 			'model_paket_wisata'	=> 'paket_wisata',
-			'model_promosi'			=> 'promosi'
+			'model_promosi'			=> 'promosi',
+			'model_ulasan'			=> 'ulasan'
 		));
 	}
 

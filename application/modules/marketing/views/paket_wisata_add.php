@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form class="form-horizontal paket_wisata" action="<?=base_url()?>marketing/paket_wisata/add" method="POST" 
+                <form class="form-horizontal paket_wisata" action="<?=base_url()?>marketing/paket_wisata/add" method="POST"
                 enctype="multipart/form-data">
-                    
+
                     <div class="form-group">
                         <label class="col-md-2 control-label">Wisata</label>
                         <div class="col-md-9">
@@ -76,7 +76,20 @@
                         </div>
                     </div>
 
-                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Lokal Agen</label>
+                        <div class="col-md-9">
+                            <input type="text" name="lokal_agen" class="form-control" placeholder="Lokal Agen">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">No Telp Lokal Agen</label>
+                        <div class="col-md-9">
+                            <input type="text" name="no_telp_lokal_agen" class="form-control" placeholder="No Telp Lokal Agen">
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-md-2 control-label"></label>
                         <div class="col-md-9">
@@ -85,7 +98,7 @@
                     </div>
 
                 </form>
-                
+
 
             </div>
 

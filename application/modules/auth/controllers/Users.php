@@ -28,7 +28,8 @@ class Users extends CI_Controller {
 			if($check_username == FALSE) // username tidak terdaftar
 			{
 				$this->session->set_flashdata('username_not_register','Username tidak terdaftar');
-				redirect('auth/users');	
+				redirect('pelanggan/home');	
+				// echo json_encode($data);
 			}
 			// elseif($check_status_user == FALSE) // status user tidak aktif
 			// {
@@ -37,8 +38,14 @@ class Users extends CI_Controller {
 			// } 
 			elseif ($valid_user == FALSE) // status user aktif dan terdaftar tapi salah password
 			{
-				$this->session->set_flashdata('wrong_password','Password salah');
-				redirect('auth/users');	
+				// $this->session->set_flashdata('wrong_password','Password salah');
+				// redirect('pelanggan/home');	
+				// echo json_encode($data);
+				$data = array (
+					'message'	=> 'Salah Password',
+					'type'		=> 'error'
+					);
+				echo json_encode($data);
 			}
 			else 
 			{
@@ -64,7 +71,10 @@ class Users extends CI_Controller {
 						break;
 					case ($valid_user->level == '4'):
 						redirect('pelanggan/home');
-						break;							
+						break;
+					case ($valid_user->level == '5'):
+						redirect('sales/home');
+						break;								
 					default : 
 						break;
 				}

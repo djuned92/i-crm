@@ -28,6 +28,8 @@ class Data_pelanggan extends CI_Controller {
 		if($search != NULL)
 		{
 			$data['pemesanan'] = $search->result();
+			// echo "<pre>";
+			// return var_dump($data['pemesanan']);
 			$this->template->manajer('data_pelanggan','script_manajer', $data);
 		}
 		elseif ($search == NULL) 

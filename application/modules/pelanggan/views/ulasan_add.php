@@ -7,20 +7,20 @@
             </ul>
         </div>
 
-        <div class="col-md-12" id="blog-listing" data-animate="fadeInDown">  
+        <div class="col-md-12" id="blog-listing" data-animate="fadeInDown">
 
             <div class="post">
                 <h2><a href="#"><?=$paket_wisata->nama_wisata?></a></h2>
                 <hr>
                <!--  <p class="date-comments">
-                    <a href="post.html"><i class="fa fa-calendar-o"></i> 
+                    <a href="post.html"><i class="fa fa-calendar-o"></i>
                         <?php
                             $tanggal = $paket_wisata->tgl_mulai;
                             $data = strtotime($tanggal);
                             // $w = date('w', $data); // hari
                             $j = date('j', $data); // tanggal
                             $n = date('n', $data); // bulan
-                        
+
                             // $hari = array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
                             $bulan = array('','Januari','Febuari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','Novovember','Desember');
                             // echo $hari[$w]. ", ".$j." ".$bulan[$n]." ".date('y');
@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <p class="intro"><?=$paket_wisata->deskripsi?></p>
-                
+
                 <hr>
                 <h2>Form Ulasan</h2>
                 <form class="ulasan" action="<?=base_url()?>pelanggan/ulasan/add/<?=$paket_wisata->id_pemesanan?>" method="POST">
@@ -44,6 +44,55 @@
                     <input type="hidden" name="id_pelanggan" value="<?=$paket_wisata->id_pelanggan?>">
 
                     <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                       <label for="rating">Penilaian</label>
+                                    </div>
+                                    <div class="col-sm-offset-2">
+                                        <label class="radio">
+                                            <input type="radio" name="rating" value="1"> 1. Sangat Tidak Memuaskan
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-offset-2">
+                                        <label class="radio">
+                                            <input type="radio" name="rating" value="2"> 2. Tidak Memuaskan
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-offset-2">
+                                        <label class="radio">
+                                            <input type="radio" name="rating" value="3"> 3. Cukup Memuaskan
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-offset-2">
+                                        <label class="radio">
+                                            <input type="radio" name="rating" value="4"> 4. Memuaskan
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-offset-2">
+                                        <label class="radio">
+                                            <input type="radio" name="rating" value="5"> 5. Sangat Memuaskan
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="kritik">Kritik</label>

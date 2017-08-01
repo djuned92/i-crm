@@ -19,16 +19,21 @@
                                 href="<?=base_url()?>admin/data_pengguna">Data Pengguna
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="<?php if ($this->uri->segment(2) == 'data_pemesanan'){ echo 'menu-top-active ';} ?>" 
                                 href="<?=base_url()?>admin/data_pemesanan">Data Pemesanan
                             </a>
                         </li>
-                        <li>
+                        <li>   
                             <a class="<?php if ($this->uri->segment(2) == 'validasi_pembayaran'){ echo 'menu-top-active ';} ?>" 
                                 href="<?=base_url()?>admin/validasi_pembayaran">Validasi Pembayaran
                             </a>
-                        </li>
+                        </li> -->
+                         <!-- <li>
+                            <a class="<?php if ($this->uri->segment(2) == 'chat'){ echo 'menu-top-active ';} ?>" 
+                                href="<?=base_url()?>admin/chat">Chat
+                            </a>
+                        </li> -->
                     </ul>
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
                         <li class="dropdown">

@@ -29,6 +29,11 @@
                                 href="<?=base_url()?>marketing/personalisasi">Personalisasi
                             </a>
                         </li>
+						<li>
+                            <a class="<?php if ($this->uri->segment(2) == 'ulasan'){ echo 'menu-top-active ';} ?>" 
+                                href="<?=base_url()?>marketing/ulasan">Ulasan Paket Wisata
+                            </a>
+                        </li>
                         <li>
                             <a class="<?php if ($this->uri->segment(2) == 'chat'){ echo 'menu-top-active ';} ?>" 
                                 href="<?=base_url()?>marketing/chat">Chat

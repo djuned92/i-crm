@@ -12,13 +12,13 @@ class Model_promosi extends CI_Model {
 						->get();
 	}
 
-	public function get_by_id($id_promosi)
+	public function get_by_id($id_paket_wisata)
 	{
 		return $this->db->select('p.*, pw.*')
 						->from('promosi as p')
 						->join('paket_wisata as pw','pw.id_paket_wisata = p.id_paket_wisata')
 						->limit(1)
-						->where('p.id_promosi',$id_promosi)
+						->where('p.id_paket_wisata',$id_paket_wisata)
 						->get();
 	}
 

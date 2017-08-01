@@ -28,6 +28,25 @@ class Template {
 		$this->CI->parser->parse('template/admin/index', $data);
 	}
 
+	public function sales($content, $script = NULL, $data = NULL)
+	{
+		$data = array(
+			'head'			=> $this->CI->load->view('template/sales/head', $data, TRUE),
+			'logo_header'	=> $this->CI->load->view('template/sales/logo_header', $data, TRUE),
+			'menu_section'	=> $this->CI->load->view('template/sales/menu_section', $data, TRUE),
+			'content'		=> $this->CI->load->view($content, $data, TRUE),
+			'footer'		=> $this->CI->load->view('template/sales/footer', $data, TRUE),
+			'script'		=> $this->CI->load->view('template/sales/script', $data, TRUE)
+			);
+		
+		if ($script != NULL) 
+		{
+			$data['other-script'] = $this->CI->load->view($script, $data, TRUE);
+		}
+		
+		$this->CI->parser->parse('template/sales/index', $data);
+	}
+
 	public function marketing($content, $script = NULL, $data = NULL)
 	{
 		$data = array(

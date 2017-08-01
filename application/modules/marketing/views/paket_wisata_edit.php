@@ -11,11 +11,11 @@
             <div class="col-md-12">
 
                 <form class="form-horizontal paket_wisata" action="<?=base_url()?>marketing/paket_wisata/update/<?=$paket_wisata->id_paket_wisata?>" method="POST" enctype="multipart/form-data">
-                    
+
                     <div class="form-group">
                         <label class="col-md-2 control-label">Wisata</label>
                         <div class="col-md-9">
-                            <input type="text" name="nama_wisata" class="form-control" placeholder="Nama Wisata" 
+                            <input type="text" name="nama_wisata" class="form-control" placeholder="Nama Wisata"
                             value="<?=$paket_wisata->nama_wisata?>">
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label">Lokasi</label>
                         <div class="col-md-9">
-                            <input type="text" name="lokasi" class="form-control" placeholder="Lokasi" 
+                            <input type="text" name="lokasi" class="form-control" placeholder="Lokasi"
                             value="<?=$paket_wisata->lokasi?>">
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label">Deskripsi</label>
                         <div class="col-md-9">
-                            <textarea class="form-control" name="deskripsi" rows="3" 
+                            <textarea class="form-control" name="deskripsi" rows="3"
                             placeholder="Deskripsi"><?=$paket_wisata->deskripsi?></textarea>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         <label class="col-md-2 control-label">Tanggal Mulai</label>
                         <div class="col-md-9">
                             <input type="date" name="tgl_mulai" class="form-control"
-                            value="<?php $tanggal = date_create($paket_wisata->tgl_mulai); 
+                            value="<?php $tanggal = date_create($paket_wisata->tgl_mulai);
                             echo date_format($tanggal,'Y-m-d')?>">
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <label class="col-md-2 control-label">Tanggal Akhir</label>
                         <div class="col-md-9">
                             <input type="date" name="tgl_akhir" class="form-control"
-                            value="<?php $tanggal = date_create($paket_wisata->tgl_akhir); 
+                            value="<?php $tanggal = date_create($paket_wisata->tgl_akhir);
                             echo date_format($tanggal,'Y-m-d')?>">
                         </div>
                     </div>
@@ -83,7 +83,21 @@
                         </div>
                     </div>
 
-                    
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Lokal Agen</label>
+                        <div class="col-md-9">
+                            <input type="text" name="lokal_agen" class="form-control" placeholder="Lokal Agen" value="<?=$paket_wisata->lokal_agen?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">No Telp Lokal Agen</label>
+                        <div class="col-md-9">
+                            <input type="text" name="no_telp_lokal_agen" class="form-control" placeholder="No Telp Lokal Agen" value="<?=$paket_wisata->no_telp_lokal_agen?>">
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <label class="col-md-2 control-label"></label>
                         <div class="col-md-9">
@@ -92,7 +106,7 @@
                     </div>
 
                 </form>
-                
+
 
             </div>
 

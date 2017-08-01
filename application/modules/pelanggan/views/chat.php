@@ -24,7 +24,7 @@
 
                                 <div class="media">
                                     <div id="chat-box">
-                                        <div class="media-body" >
+                                        <div class="media-Fsenbody" >
                                             <div class="col-md-12">
                                                 Chat admin atau marketing untuk mengetahui informasi tentang pemesanan Anda atau lainnya.
                                             </div>
@@ -41,7 +41,7 @@
 
                 <div class="panel-footer" style="display: none">
                     <div class="input-group">
-                        <input type="text" id="isi" class="form-control" placeholder="Enter Message" />
+                        <input type="text" id="message" class="form-control" placeholder="Enter Message" />
                         <span class="input-group-btn">
                             <button class="btn btn-info" id="send" type="button" onclick="sendMessage()">SEND</button>
                         </span>
@@ -59,29 +59,42 @@
                 <div class="panel-body">
                     <ul class="media-list">
 
-                        <?php foreach($user as $r):?>
                             <li class="media">
 
                                 <div class="media-body">
 
                                     <div class="media">
-                                        <a class="pull-left" id="<?=$r->id_user?>" id="id_user" href="javascript:void(0)" 
-                                        onclick="getChatAll('<?=$r->id_user?>', '<?=$this->session->userdata('id_user')?>')">
+                                        <a class="pull-left" id="5" id="to_id_user" href="javascript:void(0)" 
+                                        onclick="getChatAll('5', '<?=$this->session->userdata('id_user')?>')">
                                             <img class="media-object img-circle" style="max-height:40px;" 
                                             src="<?=base_url()?>assets/obaju/img/blog-avatar.jpg" />
                                         </a>
                                         <div class="media-body" >
-                                            <h5><?=$r->username?></h5>
+                                            <h5>Sales</h5>
                                             
                                            <small class="text-muted">
-                                                Chatting                   
+                                                Sales PT. Persada Duta Beliton                   
+                                           </small>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+                                        <a class="pull-left" id="4" id="to_id_user" href="javascript:void(0)" 
+                                        onclick="getChatAll('4', '<?=$this->session->userdata('id_user')?>')">
+                                            <img class="media-object img-circle" style="max-height:40px;" 
+                                            src="<?=base_url()?>assets/obaju/img/blog-avatar.jpg" />
+                                        </a>
+                                        <div class="media-body" >
+                                            <h5>Marketing</h5>
+                                            
+                                           <small class="text-muted">
+                                                Marketing PT. Persada Duta Beliton                   
                                            </small>
                                         </div>
                                     </div>
 
                                 </div>
                             </li>
-                        <?php endforeach;?>
 
                     </ul>
                 </div>

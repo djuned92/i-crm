@@ -22,6 +22,15 @@ class Model_pelanggan extends CI_Model {
 						->get();
 	}
 
+	public function get_pelanggan_personalisasi($id_pelanggan)
+	{
+		return $this->db->select('p.*')
+						->from('pelanggan as p')
+						->limit(1)
+						->where('p.id_pelanggan', $id_pelanggan)
+						->get();
+	}
+
 	public function add($data)
 	{
 		$this->db->insert('pelanggan',$data);
@@ -42,6 +51,22 @@ class Model_pelanggan extends CI_Model {
 	{
 		$this->db->where('id_user', $id_user)->delete('user');
 		$this->db->where('id_user', $id_user)->delete('pelanggan');
+	}
+	
+	/**
+	 * 30 april 2017
+	 */
+	
+	public function get_pelanggan_by_paket_wisata($key)
+	{
+		return $this->db->select('p.id_pemesanan, p.id_pelanggan, p.id_paket_wisata, pw.id_paket_wisata, pw.nama_wisata,
+						pw.tgl_mulai, pelanggan.id_pelanggan')
+						->from('pemesanan as p')
+						->join('paket_wisata as pw','p.id_paket_wisata = pw.id_paket_wisata', 'LEFT')
+						->join('pelanggan','p.id_pelanggan = pelanggan.id_pelanggan','LEFT')
+						->group_by('p.id_paket_wisata')
+						->where('p.id_paket_wisata', $key)
+						->get();
 	}
 
 }

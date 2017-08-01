@@ -45,9 +45,7 @@
                 </li>
                 <li><a href="<?=base_url()?>pelanggan/register">Register</a>
                 </li>
-                <li><a href="contact.html">Contact</a>
-                </li>
-                <li><a href="#">Recently viewed</a>
+                <li><a href="<?=base_url()?>pelanggan/contact_us">Hubungi Kami</a>
                 </li>
             </ul>
         </div>

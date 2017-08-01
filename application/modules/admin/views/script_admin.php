@@ -224,10 +224,10 @@ $(document).ready(function(){
     });
     
     setInterval(function(){ 
-        if($("#id_user").val() > 0){
+        if($("#to_id_user").val() > 0){
             //getLastId($("#id_user").val(),$("#id_last_chat").val()); 
             //getChat($("#id_user").val(),$("#id_last_chat").val()); 
-            getChatAll($("#id_user").val(),$("#id_last_chat").val());
+            getChatAll($("#to_id_user").val(),$("#id_last_chat").val());
             autoScroll();
         }else{
             
@@ -235,13 +235,13 @@ $(document).ready(function(){
     },3000);
 });
 
-function getChatAll(id_user,id_last_chat){
+function getChatAll(from_id_user,to_id_user){
     
     $.ajax({
         url     : "<?=site_url('admin/chat/getChatAll')?>",
         type    : 'POST',
         dataType: 'html',
-        data    : {id_user:id_user,id_last_chat:id_last_chat},
+        data    : {from_id_user:from_id_user,to_id_user:to_id_user},
         beforeSend  : function(){
             $("#loading").show();
         },
@@ -251,19 +251,19 @@ function getChatAll(id_user,id_last_chat){
             $(".panel-footer").show();
             
             autoScroll();
-            document.getElementById('isi').focus();
+            document.getElementById('message').focus();
         }
     });
 }
 
-function getChat(id_user,id_last_chat){
+function getChat(from_id_user,to_id_user){
    
     
     $.ajax({
         url     : "<?php echo site_url('admin/chat/getChat') ?>",
         type    : 'POST',
         dataType: 'html',
-        data    : {id_user:id_user,id_last_chat:id_last_chat},
+        data    : {from_id_user:from_id_user,to_id_user:to_id_user},
         beforeSend  : function(){
             $("#loading").show();
         },
@@ -275,7 +275,7 @@ function getChat(id_user,id_last_chat){
                 $("#chat-box").append(result);
             }
             $(".panel-footer").show();
-            document.getElementById('isi').focus();
+            document.getElementById('message').focus();
         }
     });
 }
@@ -296,24 +296,24 @@ function getLastId(id_user,id_last_chat){
 }
 
 function sendMessage(){
-    var isi   = $("#isi").val();
-    var id_user = $("#id_user").val();
+    var message   = $("#message").val();
+    var to_id_user = $("#to_id_user").val();
     
     
-    if(isi == ''){
-        document.getElementById('isi').focus();
+    if(message == ''){
+        document.getElementById('message').focus();
     }else{
         $.ajax({
             url     : "<?php echo site_url('admin/chat/sendMessage') ?>",
             type    : 'POST',
             dataType: 'json',
-            data    : {id_user:id_user,isi:isi},
+            data    : {to_id_user:to_id_user,message:message},
             beforeSend  : function(){
             },
             success : function(result){
                 getChat($("#id_user").val(),$("#id_last_chat").val());
                 getLastId($("#id_user").val(),$("#id_last_chat").val()); 
-                $("#isi").val('');
+                $("#message").val('');
                 getChatAll($("#id_user").val(),$("#id_last_chat").val());
                 autoScroll();
 
@@ -322,10 +322,10 @@ function sendMessage(){
     }
 }
 
-function autoScroll(){
-    var elem = document.getElementById('box');
-    elem.scrollTop = elem.scrollHeight;
-}
+// function autoScroll(){
+//     var elem = document.getElementById('box');
+//     elem.scrollTop = elem.scrollHeight;
+// }
 
 function aktifkan(i){
     $("li").removeClass("active");

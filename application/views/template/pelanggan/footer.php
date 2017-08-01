@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6">
-                <h4>Pages</h4>
+                <h4>Halaman</h4>
 
                 <ul>
                     <li><a href="<?=base_url()?>pelanggan/about_us">Tentang Kami</a>
@@ -18,7 +18,7 @@
                 
                 <hr>
 
-                <h4>User section</h4>
+                <h4>User</h4>
 
                     <ul>
                         <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>

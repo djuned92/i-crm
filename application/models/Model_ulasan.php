@@ -18,7 +18,7 @@ class Model_ulasan extends CI_Model {
 	{
 		$this->db->insert('ulasan',$data);
 	}
-	
+
 	public function check_ulasan($id_pelanggan, $id_paket_wisata)
 	{
 		return $this->db->select('p.*, u.*')
@@ -43,7 +43,14 @@ class Model_ulasan extends CI_Model {
 						->join('ulasan as u','u.id_pelanggan = p.id_pelanggan')
 						->join('paket_wisata as pw','u.id_paket_wisata = u.id_paket_wisata')
 						->where('pw.id_paket_wisata',$id_paket_wisata)
-						->get();	
+						->get();
+	}
+
+	public function rating($id_paket_wisata)
+	{
+		return $this->db->select_avg('rating')
+						->where('id_paket_wisata',$id_paket_wisata)
+						->get('ulasan');
 	}
 }
 

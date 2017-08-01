@@ -13,3 +13,4 @@
 <script src="<?=base_url()?>assets/obaju/js/bootstrap-hover-dropdown.js"></script>
 <script src="<?=base_url()?>assets/obaju/js/owl.carousel.min.js"></script>
 <script src="<?=base_url()?>assets/obaju/js/front.js"></script>
+<script src="<?=base_url()?>assets/js/star-rating.js"></script>

@@ -135,6 +135,7 @@ class Model_pemesanan extends CI_Model {
 						->where('p.tgl_pemesanan >=',$from_tgl)
 						->where('p.tgl_pemesanan <=',$to_tgl)
 						->where('p.status','Disetujui')
+						->group_by('pw.id_paket_wisata')
 						->order_by('p.id_pemesanan','DESC')
 						->get();
 		
@@ -158,6 +159,52 @@ class Model_pemesanan extends CI_Model {
 						->join('pembayaran as bayar','bayar.id_pemesanan = pemesanan.id_pemesanan')
 						->where($where)
 						->get();	
+	}
+
+	/**
+	 * 30 april 2017
+	 */
+	public function get_pemesanan()
+	{
+		return $this->db->select('pemesanan.id_paket_wisata, pemesanan.id_pemesanan, pw.*')
+						->from('pemesanan')
+						->join('paket_wisata as pw','pemesanan.id_paket_wisata = pw.id_paket_wisata')
+						->group_by('pemesanan.id_paket_wisata')
+						->order_by('pemesanan.id_pemesanan','DESC')
+						->get();	
+	}
+	
+	public function get_pelanggan($id_paket_wisata) 
+	{
+		return $this->db->select('p.id_pemesanan, p.id_pelanggan, p.id_paket_wisata, pw.id_paket_wisata, pw.nama_wisata,
+						pw.tgl_mulai, pelanggan.id_pelanggan, pelanggan.nama, pelanggan.no_telp')
+						->from('pemesanan as p')
+						->join('paket_wisata as pw','p.id_paket_wisata = pw.id_paket_wisata', 'LEFT')
+						->join('pelanggan','p.id_pelanggan = pelanggan.id_pelanggan','LEFT')
+						->like('p.status','Disetujui')
+						->where('p.id_paket_wisata', $id_paket_wisata)
+						->get();
+	}
+
+	public function count_paket_wisata($id_paket_wisata)
+	{
+		$q = $this->db->select('pemesanan.*, pw.*')
+						->from('pemesanan')
+						->join('paket_wisata as pw','pemesanan.id_paket_wisata = pw.id_paket_wisata','LEFT')
+						->where('pemesanan.id_paket_wisata', $id_paket_wisata)
+						->get();
+		return $q->num_rows();
+	}
+
+	public function laporan_pemesanan($id_paket_wisata)
+	{
+		return $this->db->select('p.id_pemesanan, p.id_pelanggan, p.id_paket_wisata, pw.id_paket_wisata, pw.nama_wisata,
+						pw.tgl_mulai, pelanggan.id_pelanggan, pelanggan.nama, pelanggan.no_telp')
+						->from('pemesanan as p')
+						->join('paket_wisata as pw','p.id_paket_wisata = pw.id_paket_wisata', 'LEFT')
+						->join('pelanggan','p.id_pelanggan = pelanggan.id_pelanggan','LEFT')
+						->where('p.id_paket_wisata', $id_paket_wisata)
+						->get();
 	}	
 }
 

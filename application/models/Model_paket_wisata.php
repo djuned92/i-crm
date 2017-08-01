@@ -47,7 +47,7 @@ class Model_paket_wisata extends CI_Model {
 	{
 		$this->db->insert('paket_wisata',$data);
 	}
-	
+
 	public function update($id_paket_wisata, $data)
 	{
 		$this->db->where('id_paket_wisata', $id_paket_wisata)->update('paket_wisata',$data);
@@ -58,6 +58,30 @@ class Model_paket_wisata extends CI_Model {
 		$this->db->where('id_paket_wisata',$id_paket_wisata)->delete('paket_wisata');
 	}
 
+	/*
+	* tanggal 1 mei 2017
+	*/
+
+	public function ulasan_not_null()
+	{
+		return $this->db->select('pw.*, u.*')
+						->from('paket_wisata as pw')
+						->join('ulasan as u','u.id_paket_wisata = pw.id_paket_wisata')
+						->order_by('pw.id_paket_wisata','DESC')
+						->group_by('u.id_paket_wisata')
+						->where('u.id_paket_wisata !=','NULL')
+						->get();
+	}
+
+	public function ulasan_all()
+	{
+		return $this->db->select('pw.*') // , u.*
+						->from('paket_wisata as pw')
+						// ->join('ulasan as u','u.id_paket_wisata = pw.id_paket_wisata')
+						->order_by('pw.id_paket_wisata','DESC')
+						// ->group_by('u.id_paket_wisata')
+						->get();
+	}
 }
 
 /* End of file Model_paket_wisata.php */

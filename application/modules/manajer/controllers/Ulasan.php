@@ -19,7 +19,8 @@ class Ulasan extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('text');
-		$data['paket_wisata'] = $this->paket_wisata->get_all()->result();
+		$data['paket_wisata'] = $this->paket_wisata->ulasan_not_null()->result();
+		// $this->load->view('ulasan', $data);
 		$this->template->manajer('ulasan','script_manajer',$data);
 	}
 

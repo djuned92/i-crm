@@ -8,13 +8,14 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model(array(
 			'model_paket_wisata'	=> 'paket_wisata',
-			'model_promosi'			=> 'promosi'
+			'model_promosi'			=> 'promosi',
+			'model_ulasan'			=> 'ulasan'
 		));
 	}
 	public function index()
 	{
 		$this->load->library('pagination');
-		
+
 		// pagination settings
 	    // $config['base_url'] = 'http://localhost/i-crm/pelanggan/home/index';
 	    // $config['total_rows'] = $this->paket_wisata->count_all();
@@ -48,7 +49,7 @@ class Home extends CI_Controller {
 	    // $data['paket_wisata'] = $this->paket_wisata->paket_wisata_list($data['page'], $config['per_page'])->result();
 	    // $data['pagination'] = $this->pagination->create_links();
 		$data['paket_wisata'] = $this->paket_wisata->get_all()->result();
-		$this->template->pelanggan('home','script_pelanggan',$data);		
+		$this->template->pelanggan('home','script_pelanggan',$data);
 	}
 
 	public function register()

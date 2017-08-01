@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                
+
                 <?php if($this->session->flashdata('no_data')):?>
                     <div class="alert alert-info">
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-          <?php if(isset($_POST['from_tgl']) && isset($_POST['to_tgl'])):?>
+        <?php if(isset($_POST['from_tgl']) && isset($_POST['to_tgl'])):?>
             <div class="col-md-10 col-md-offset-1">
                 <table class="table table-striped">
                     <thead>
@@ -56,7 +56,7 @@
                             <td><?=$r->nama_wisata?></td>
                             <td><?=$r->lokasi?></td>
                             <td>
-                                <?php 
+                                <?php
                                     $tgl_mulai = date_create($r->tgl_mulai);
                                     $tgl_mulai = date_format($tgl_mulai, 'd-m-Y');
 
@@ -72,7 +72,7 @@
                     </tbody>
                 </table>
             </div>
-            <?php endif;?>
+        <?php endif;?>
     </div>
 </div>
 <!-- CONTENT-WRAPPER SECTION END-->

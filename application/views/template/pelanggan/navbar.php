@@ -22,8 +22,8 @@
                 </li>
                 <li class="<?php if($this->uri->segment(2) == 'ulasan'){echo'active';}?>"><a href="<?=base_url()?>pelanggan/ulasan">Ulasan</a>
                 </li>
-              <!--   <li class="<?php if($this->uri->segment(2) == 'chat'){echo'active';}?>"><a href="<?=base_url()?>pelanggan/chat">Chat</a>
-                </li> -->
+                <li class="<?php if($this->uri->segment(2) == 'chat'){echo'active';}?>"><a href="<?=base_url()?>pelanggan/chat">Chat</a>
+                </li>
                 <?php endif; ?>
                 <li class="<?php if($this->uri->segment(2) == 'testimoni'){echo'active';}?>"><a href="<?=base_url()?>pelanggan/testimoni">Testimoni</a>
                 </li>
